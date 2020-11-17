@@ -1,0 +1,94 @@
+@import "../../assets/variables";
+
+.div1 {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+
+    background-image: url("../../assets/img/image1.png");
+    background-size: 50%;
+    background-position-x: right;
+    background-position-y: center;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .image {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .text {
+        position: absolute;
+        // margin: 2em;
+        color: $color_4;
+        h1 {
+            font-size: 4.5rem;
+        }
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+    .bottom {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        height: 10vh;
+        display: flex;
+        justify-content: center;
+
+        .text {
+            background: $dark;
+            color: $color_3;
+            width: auto;
+            display: inline-block;
+            padding: 1em;
+            margin: 0em;
+            h2 {
+                margin: 0em;
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.line {
+    background: $dark;
+    width: 100%;
+    height: 1em;
+    bottom:0px;
+}
+
+.events {
+    .list {
+        background-color: white;
+        list-style-type: none;
+        margin-top: 2em;
+        .row {
+            padding: 1em;
+            cursor: pointer;
+            img {
+                width: 90%;
+            }
+            .text {
+                padding: 2em;
+                h1 {
+                    color: $dark;
+                    -webkit-text-fill-color: $color_3; /* Will override color (regardless of order) */
+                    -webkit-text-stroke-width: 1px;
+                    -webkit-text-stroke-color: $dark;
+                }
+            }
+        }
+        hr {
+            margin: 0em;
+            background: $pink;
+        }
+    }
+}
+
+.footer-separator {
+    height: 6em;
+}

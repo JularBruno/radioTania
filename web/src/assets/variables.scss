@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css?family=Dosis:300,500,700&display=swap");
+
+$color_1: #d4ff2aff; //
+$color_2: #b4b4b4ff; //
+$color_3: #FFFFFF; // light
+$color_4: #FFFFFF; 
+$color_5: #f7f7f7;
+$color_6: #5f5f5f;
+$color_7: #e99bb571;
+$lightgray: #d8d8d8;
+$mediumgray: #999999;
+$dark: #222222; //
+$pink: #FF7380; //
+$font_family_1: "Dosis", sans-serif;
+
+$default-font-color: $dark;
+$background_default: $color_3;
+$background_light: $color_5;
+$background_color_1: #AE0517;
+$background_color_2: #513568;
+$background_color_3: rgba(0, 0, 0, 0.5);
+$background_color_4: #353535;
+$background_color_5: #252525;
+$border_color_1: $color_1;
+$border_color_2: $color_2;
+
+// utilities
+
+.box-shadow-default {
+    -webkit-box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.4);
+}
