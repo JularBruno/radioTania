@@ -114,9 +114,10 @@ br {
     height: 100%;
     .slide {
         text-align: center;
+        max-height: 100%;
         .item {
-            width: 35%;
-            height: auto;
+            width: 60%;
+            height: 100%;
         }
     }
     
