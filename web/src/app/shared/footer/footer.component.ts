@@ -8,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 
 export class FooterComponent implements OnInit {
 
+  iframeVisibility: boolean = true;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  hideIframe() {
+    this.iframeVisibility = !this.iframeVisibility;
   }
 
 }

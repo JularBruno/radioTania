@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'events', component: EventsComponent },
-  { path: 'event/:id', component: EventComponent },
+  { path: 'events/:id', component: EventComponent },
   { path: 'audios', component: AudiosComponent },
   { path: 'audios/:category', component: AudioComponent },
   { path: 'videos', component: VideosComponent },

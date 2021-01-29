@@ -55,6 +55,14 @@
                 </div>
             </div>
 
+            <div class="carrusel">        
+                <carousel style="padding: 2em;">
+                    <slide *ngFor="let slide of slides; let index=index" class="slide">
+                        <img [src]="slide.image" alt="image slide" class="item">
+                    </slide>
+                </carousel>
+            </div>
+
             <div class="sections">
                 <div class="row">
                     <div class="col-6" >

@@ -1,3 +1,14 @@
 <div class="footer">
-    <iframe src="https://radio11.argentinaservers.online/cp/widgets/player/single/?p=8236" height="110" width="100%" scrolling="no" style="border:none;"></iframe>
+    <div class="hidder" *ngIf="iframeVisibility">
+        <button class="button" (click)="hideIframe()">
+            Esconder
+        </button>
+    </div>
+    <iframe *ngIf="iframeVisibility" src="https://radio11.argentinaservers.online/cp/widgets/player/single/?p=8236" height="110" width="100%" scrolling="no" style="border:none; background-color: black;"></iframe>
+
+    <div class="hidder" *ngIf="!iframeVisibility">
+        <button class="buttonRep" (click)="hideIframe()">
+            Reproductor
+        </button>
+    </div>
 </div>

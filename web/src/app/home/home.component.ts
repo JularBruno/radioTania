@@ -17,6 +17,24 @@ export class HomeComponent implements OnInit {
 
   isMobileResolution: boolean;
 
+  slides = [
+    {image: '../../assets/img/todasLasVoces/1.png'},
+    {image: '../../assets/img/todasLasVoces/2.png'},
+    {image: '../../assets/img/todasLasVoces/3.png'},
+    {image: '../../assets/img/todasLasVoces/4.png'},
+    {image: '../../assets/img/todasLasVoces/5.png'},
+    {image: '../../assets/img/todasLasVoces/6.png'},
+    {image: '../../assets/img/todasLasVoces/7.png'},
+    {image: '../../assets/img/todasLasVoces/8.png'},
+    {image: '../../assets/img/todasLasVoces/9.png'},
+    {image: '../../assets/img/todasLasVoces/10.png'},
+    {image: '../../assets/img/todasLasVoces/11.png'},
+    {image: '../../assets/img/todasLasVoces/12.png'},
+    {image: '../../assets/img/todasLasVoces/13.png'},
+  ];
+  
+
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router
