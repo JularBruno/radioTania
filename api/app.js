@@ -144,7 +144,7 @@ app.use(cookieParser())
  */
 app.use('/api', routes)
 
-app.use('/files', express.static(path.join(__dirname, '../adm/files'))) 
+app.use('/files', express.static(path.join(__dirname, '../api/files'))) 
 app.use('/', express.static(path.join(__dirname, '../web/dist/'))) // trying
 
 app.use('/', express.static(path.join(__dirname, '../adm/dist/'))) // trying

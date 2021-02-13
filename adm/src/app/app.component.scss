@@ -1,0 +1,46 @@
+.sidenav-container {
+    height: 100%;
+}
+
+.sidenav {
+    width: 200px;
+
+    .router-link-active {
+        border-left: 5px solid rgb(102, 102, 102);
+        color: rgb(102, 102, 102);
+    }
+}
+
+.mat-toolbar {
+    background: #ffffff !important;
+    height: 5em;
+    
+    &.menubar {
+        background: rgb(54, 54, 54) !important;
+        color: rgb(255, 255, 255);
+        //background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAABUCAYAAAB5huK+AAAABmJLR…halHFvZnNo0/XAB6Q9lDrKWOxxe2CTPuLTV2XneOIJ/g/SjZ1btgfmuQAAAABJRU5ErkJggg==), linear-gradient(to left, #dfa400, #dc2430);
+    }
+    img {
+        width: 80%;
+    }
+}
+
+.mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.mat-nav-list {
+    a {
+        font-size: .9em;
+        height: 4em;
+    }
+}
+
+.logoToolbar {
+    justify-content: center;
+    .logoImage {
+        width: 50% !important;
+    }
+}

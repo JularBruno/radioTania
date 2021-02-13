@@ -1,0 +1,58 @@
+<div class="container p-4">
+
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <h2 class="section-title">
+                <i class="fa fa-calendar icon-primary"></i> Turnos</h2>
+
+        </div>
+        <div class="col-sm-6 text-right">
+            <!-- <button type="button" class="btn primary ml-2" (click)="create()">
+            <i class="fa fa-plus"></i> CREAR PROFESIONAL</button> -->
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table table-striped mt-4">
+            <thead class="thead-light">
+                <tr>
+                    <th>Usuario</th>
+                    <th>Profesional</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Pagado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Cargador -->
+                <tr *ngIf="loading" class="text-center">
+                    <td colspan="6">
+                        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Cargando turnos...
+                    </td>
+                </tr>
+                <!-- Texto cuando no hay resultados  -->
+                <tr *ngIf="!loading && items.length == 0" class="text-center">
+                    <td colspan="6">
+                        <span class="text-muted">
+                  <i class="fa fa-close" aria-hidden="true"></i>
+                No hay turnos para mostrar
+              </span>
+                    </td>
+                </tr>
+                <tr *ngFor="let item of itemsTurns">
+                    <td width="30%">{{item.user.user}}</td>
+                    <td width="30%">{{item.profesional.user}}</td>
+                    <td width="30%">{{item.date | date: 'dd/MM/yyyy'}}</td>
+                    <td width="30%">{{item.time}}</td>
+
+                    <td width="30%" *ngIf="item.payed">
+                        <i class="fa fa-check" style="color:green;" aria-hidden="true"></i>
+                    </td>
+                    <td width="30%" *ngIf="!item.payed">
+                        <i class="fa fa-times" style="color:red;" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

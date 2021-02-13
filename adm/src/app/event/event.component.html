@@ -1,0 +1,334 @@
+<div class="container-fluid">
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a [routerLink]="['/events']"><i class="fa fa-calendar-o icon-primary"></i> Eventos</a>
+        </li>
+        <li class="breadcrumb-item active"> Administrador de eventos </li>
+    </ol>
+
+    <div class="container">
+        <form class="w-100 pt-3" [formGroup]="formObject" (ngSubmit)="logForm(formObject.value)">
+            <h3>Administrar eventos</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Título</label>
+                        <input type="text" class="form-control" placeholder="Título" formControlName="title">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Resumen</label>
+                        <quill-editor formControlName="resume" [styles]="{height: '200px'}"></quill-editor>
+                    </div>
+                </div>
+
+                <div class="col-md-8 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Miniatura
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <angular-file-uploader [config]="afuConfigThumb" (ApiResponse)="responseFile($event, 'miniature', false)">
+                                    </angular-file-uploader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Miniatura vista previa
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <img [src]="gethtmlImage(imagesObject.miniature)" onerror="this.src='assets/no-product.png';" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Imagen principal
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <angular-file-uploader [config]="afuConfigThumb" (ApiResponse)="responseFile($event, 'firstImage', false)">
+                                    </angular-file-uploader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Imagen principal vista previa
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <img [src]="gethtmlImage(imagesObject.firstImage)" onerror="this.src='assets/no-product.png';" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Descripción</label>
+                        <quill-editor formControlName="description" [styles]="{height: '200px'}"></quill-editor>
+                    </div>
+                </div>
+
+                <div class="col-md-8 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Logo
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <angular-file-uploader [config]="afuConfigThumb" (ApiResponse)="responseFile($event, 'logo', false)">
+                                    </angular-file-uploader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Logo vista previa
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <img [src]="gethtmlImage(imagesObject.logo)" onerror="this.src='assets/no-product.png';" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-md-8 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Segunda imagen
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <angular-file-uploader [config]="afuConfigThumb" (ApiResponse)="responseFile($event, 'secondImage', false)">
+                                    </angular-file-uploader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Segunda imagen vista previa
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <img [src]="gethtmlImage(imagesObject.secondImage)" onerror="this.src='assets/no-product.png';" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="form-group mb-3">
+                        <label>Título del video</label>
+                        <input type="text" class="form-control" placeholder="Título del video" formControlName="titleVideo">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <label>Link del video</label>
+                            <input type="text" class="form-control" placeholder="Video url" formControlName="videoUrl">
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Para poder integrar un video de youtube en la página es necesario que el link se obtenga de la siguiente forma:
+                                <br>
+                                1- Ingresar al video de youtube
+                                <br>
+                                2- Clickear compartir
+                                <br>
+                                3- Clickear Incorporar
+                                <br>
+                                4- Buscar dentro de todo el texto mostrado lo que está dentro de las comillas de la palabra src. Ej:
+                                <br>
+                                iframe width="560" height="315" src="<b>https://www.youtube.com/embed/3QvsRXeVqEE</b>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                                
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Vista previa
+                        </div>
+                        <div class="card-body">
+                            <iframe width="100%" height="100%"
+                            [src]="getVideo()">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8" style="margin-top: 1em;">
+                    <div class="form-group mb-3">
+                        <label>Título fotos</label>
+                        <input type="text" class="form-control" placeholder="Título fotos" formControlName="titlePhotos">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Fotos
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <angular-file-uploader [config]="afuConfigThumbMultiple" (ApiResponse)="responseFile($event, 'photosRow', true)">
+                                    </angular-file-uploader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Fotos vista previa
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4" *ngFor="let image of imagesObject.photosRow">
+                                    <button type="button" class="btn btn-danger btn-sm round" (click)="deleteImage(image, 'photosRow')">
+                                        <i class="fa fa-times text-white"></i>
+                                    </button>
+                                    <img [src]="gethtmlImage(image)" onerror="this.src='assets/no-product.png';" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8" style="margin-top: 1em;">
+                    <div class="form-group mb-3">
+                        <label>Título carrousel</label>
+                        <input type="text" class="form-control" placeholder="Título carrousel" formControlName="titleCarrousel">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Fotos carrusel
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <angular-file-uploader [config]="afuConfigThumbMultiple" (ApiResponse)="responseFile($event, 'carrouselPhotos', true)">
+                                    </angular-file-uploader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Fotos carrusel vista previa
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4" *ngFor="let image of imagesObject.carrouselPhotos">
+                                    <button type="button" class="btn btn-danger btn-sm round" (click)="deleteImage(image, 'carrouselPhotos')">
+                                        <i class="fa fa-times text-white"></i>
+                                    </button>
+                                    <img [src]="gethtmlImage(image)" onerror="this.src='assets/no-product.png';" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-8" style="margin-top: 1em;">
+                    <div class="form-group mb-3">
+                        <label>Título link</label>
+                        <input type="text" class="form-control" placeholder="Título link" formControlName="titleLink">
+                    </div>
+                </div>
+                <div class="col-md-6" style="margin-top: 1em;">
+                    <div class="form-group mb-3">
+                        <label>Link</label>
+                        <input type="text" class="form-control" placeholder="Link" formControlName="link">
+                    </div>
+                </div>
+                <div class="col-md-6" style="margin-top: 1em;">
+                    <div class="form-group mb-3">
+                        <label>Texto Link</label>
+                        <input type="text" class="form-control" placeholder="Texto Link" formControlName="linkText">
+                    </div>
+                </div>
+                
+                <div class="col-md-8" style="margin-top: 1em;">
+                    <div class="form-group mb-3">
+                        <label>Título fondo</label>
+                        <input type="text" class="form-control" placeholder="Título fondo" formControlName="textBottom">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Fotos fondo
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <angular-file-uploader [config]="afuConfigThumbMultiple" (ApiResponse)="responseFile($event, 'bottomImages', true)">
+                                    </angular-file-uploader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Fotos fondo vista previa
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4" *ngFor="let image of imagesObject.bottomImages">
+                                    <button type="button" class="btn btn-danger btn-sm round" (click)="deleteImage(image, 'bottomImages')">
+                                        <i class="fa fa-times text-white"></i>
+                                    </button>
+                                    <img [src]="gethtmlImage(image)" onerror="this.src='assets/no-product.png';" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn primary mb-4 mt-4 float-right" type="button" block [disabled]="!formObject.valid"
+                (click)="logForm(formObject.value)"><i class="fa fa-check " aria-hidden="true"></i> GUARDAR
+            </button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="container-fluid">
+
+    <div class="container">
+        <form class="w-100 pt-3" [formGroup]="formObject" (ngSubmit)="logForm(formObject.value)">
+            <h3>Administrar inicio</h3>
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Descripción</label>
+                        <quill-editor formControlName="description" [styles]="{height: '200px'}"></quill-editor>
+                    </div>
+                </div>
+
+                <div class="col-md-8 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Logo
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <angular-file-uploader [config]="afuConfigThumb" (ApiResponse)="responseFile($event, 'logo', false)">
+                                    </angular-file-uploader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Logo vista previa
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <img [src]="gethtmlImage(imagesObject.logo)" onerror="this.src='assets/no-product.png';" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8" style="margin-top: 1em;">
+                    <div class="form-group mb-3">
+                        <label>Título carrousel</label>
+                        <input type="text" class="form-control" placeholder="Título carrousel" formControlName="slideTitle">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Fotos carrusel
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <angular-file-uploader [config]="afuConfigThumbMultiple" (ApiResponse)="responseFile($event, 'carrouselPhotos', true)">
+                                    </angular-file-uploader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Fotos carrusel vista previa
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4" *ngFor="let image of imagesObject.carrouselPhotos">
+                                    <button type="button" class="btn btn-danger btn-sm round" (click)="deleteImage(image, 'carrouselPhotos')">
+                                        <i class="fa fa-times text-white"></i>
+                                    </button>
+                                    <img [src]="gethtmlImage(image)" onerror="this.src='assets/no-product.png';" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <button class="btn primary mb-4 mt-4 float-right" type="button" block [disabled]="!formObject.valid"
+                (click)="logForm(formObject.value)"><i class="fa fa-check " aria-hidden="true"></i> GUARDAR
+            </button>
+        </form>
+    </div>
+</div>

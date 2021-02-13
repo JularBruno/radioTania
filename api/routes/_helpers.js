@@ -6,13 +6,9 @@ const uuid = require('uuid');
 import jwt from 'jsonwebtoken';
 import Debug from 'debug'
 import settings from '../config/settings';
-// import achievement from '../models/achievement';
-// import userAchievement from '../models/userAchievement';
-// import {info} from "easyimage";
-// import {thumbnail} from "easyimage";
-
-
 const debug = new Debug('api/_helpers/')
+
+var mv = require('mv');
 
 // **** TOKEN  ****
 
@@ -130,58 +126,30 @@ module.exports = {
 
     if (req.files && req.files.file0) {
 
-
       for(let i in req.files) {
 
         const file = req.files[i];
         const tmp = file.type.split('/');
 
+        let fileExtension = tmp[1];
+
+        if(fileExtension === 'mpeg') {
+          fileExtension = 'mp3';
+        }
+
+
         if (tmp.length == 2) {
-          const newFileName = prefix + uuid.v4() + '.' + tmp[1];
-          
-  
-          // console.log(newFileName);
-          // var imageSizes = [125, 100, 30];
+          const newFileName = prefix + uuid.v4() + '.' + fileExtension;
   
           console.log('file.path, req.settings.imagesDir, newFileName', file.path, ' - ' ,req.settings.imagesDir, ' - ' ,newFileName)
-          fs.rename(file.path, req.settings.imagesDir + newFileName, (err) => {
+          // fs.rename(file.path, req.settings.imagesDir + newFileName, (err) => {
+          mv(file.path, req.settings.imagesDir + newFileName, function(err) {
             if (err) {
               return res.status(400).json({
                 message: err.message || 'fallo al renombrar imagen',
                 err
               });
             } else {
-  
-              // console.log("imageeee:"+req.settings.imagesDir + newFileName);
-              
-              // try {
-              //     const imageInfo = info(req.settings.imagesDir + newFileName)
-              //     .then(item => {
-              //       console.log("item: ", item);
-              //     })
-              //     .catch(error => {
-              //       console.log("Error: ", error);
-              //     });
-                  
-              //     console.log("imageeee imageInfo:"+imageInfo);
-  
-              //     const thumbnailInfo = thumbnail({
-              //         src: req.settings.imagesDir + newFileName,
-              //         width: 100,
-              //         height: 100,
-              //     })
-              //     .then(item => {
-              //       console.log("item: ", item);
-              //     })
-              //     .catch(error => {
-              //       console.log("Error: ", error);
-              //     });
-              
-              // } catch (e) {
-              //     console.log("Error: ", e);
-              // }
-              // console.log("imageeee end");
-  
   
               if (cb) {
                 cb(newFileName);
@@ -273,34 +241,6 @@ module.exports = {
       })
   },
 
-  // findById:(model, req, res) => {
-  //   let options = {};
-  //   if (req.extraOptions) {
-  //     if (req.extraOptions.include) {
-  //       options.include = req.extraOptions.include;
-  //     }
-  //   }
-  //   model.findById(req.params.id, options)
-  //     .then(item => {
-  //       debug(`finbyid then`, item)
-  //       if (item) {
-  //         res.status(200).json(item);
-  //       } else {
-  //         res.status(404).json({
-  //           message: `No se ha encontrado objecto con id: ${req.params.id}`
-  //         });
-  //       }
-  //     })
-  //     .catch(error => {
-  //       res.status(404).json({
-  //         message: `No se ha encontrado objecto con id: ${req.params.id}`,
-  //         error
-  //       })
-  //     });
-  // },
-
-
-
   register: (model, req, res) => {
     const params = req.body;
     debug(params)
@@ -350,73 +290,6 @@ module.exports = {
       })
     }
   },
-
-
-
-
-  // register: (model, req, res) => {
-  //   const params = req.body;
-  //   debug(params)
-  //
-  //   // check for duplicate 'email' in this case
-  //   if (params && params.email) {
-  //
-  //     model
-  //       .findOne({email: params.email})
-  //       .then((user) => {
-  //         if (user) {
-  //           res.status(400).json({
-  //             message: 'Ya existe un usuario registrado con esos datos',
-  //             error : {}
-  //           })
-  //         } else {
-  //           model
-  //             .create(req.body)
-  //             .then(user => {
-  //               achievement.find({})
-  //                 .then(ach => {
-  //                   if (ach) {
-  //                     ach.forEach(el => {
-  //                       if (el.active) {
-  //                         userAchievement.create({
-  //                           user: user._id,
-  //                           achievement: el._id
-  //                         })
-  //                       }
-  //                     });
-  //                   }
-  //                 })
-  //               createToken(user)
-  //                 .then(accessToken => {
-  //                   debug('register token response ', accessToken);
-  //                   res.status(200).json({
-  //                     user,
-  //                     accessToken
-  //                   })
-  //                 })
-  //                 .catch(error => {
-  //                   return Promise.reject(error);
-  //                 });
-  //             })
-  //             .catch(error => {
-  //               return Promise.reject(error);
-  //             });
-  //         }
-  //       })
-  //       .catch(error => {
-  //         res.status(400).json({
-  //           message: 'Ocurrio un error',
-  //           error
-  //         })
-  //       });
-  //   } else {
-  //     res.status(400).json({
-  //       message: 'Ocurrio un error',
-  //       error: {}
-  //     })
-  //   }
-  // },
-
 
   login: (model, req, res) => {
     const params = req.body;

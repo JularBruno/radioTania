@@ -1,0 +1,178 @@
+<div class="container-fluid">
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a [routerLink]="['/users']"><i class="fa fa-black-tie icon-primary"></i> Usuarios</a>
+        </li>
+        <li class="breadcrumb-item active"> Administrador de usuarios </li>
+    </ol>
+
+
+    <div class="container">
+        <form class="w-100 pt-3" [formGroup]="formObject" (ngSubmit)="logForm(formObject.value)">
+            <h3>Administrar usuarios</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group mb-3">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control" placeholder="Nombre" formControlName="name">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group mb-3">
+                        <label>Usuario</label>
+                        <input type="text" class="form-control" placeholder="Usuario" formControlName="user">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group mb-3">
+                        <label>Contraseña</label>
+                        <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Descripción</label>
+                        <input type="text" class="form-control" placeholder="Descripción" formControlName="description">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Especialidad</label>
+                        <select class="form-control" placeholder="Estado" formControlName="especiality">
+                            <option value="Psicología de las organizaciones y del trabajo">Psicología de las organizaciones y del trabajo</option>
+                            <option value="Psicología del marketing y del consumidor">Psicología del marketing y del consumidor</option>
+                            <option value="Psicología clínica y de la salud">Psicología clínica y de la salud</option>
+                            <option value="Sexología">Sexología</option>
+                            <option value="Neuropsicología">Neuropsicología</option>
+                            <option value="Psicología forense">Psicología forense</option>
+                            <option value="Psicología de la educación y del desarrollo">Psicología de la educación y del desarrollo</option>
+                            <option value="Psicología del deporte">Psicología del deporte</option>
+                          </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Cronograma</label>
+                        <input type="text" class="form-control" placeholder="Cronograma" formControlName="cronogram">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Estado</label>
+                        <select class="form-control" placeholder="Estado" formControlName="state">
+                            <option value="green">Libre</option>
+                            <option value="yellow">Disponible para agenda</option>
+                            <option value="red">No disponible</option>
+                          </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Dirección</label>
+                        <input type="text" class="form-control" placeholder="Dirección" formControlName="address">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Ciudad</label>
+                        <input type="text" class="form-control" placeholder="Ciudad" formControlName="city">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Rango de precios</label>
+                        <input type="text" class="form-control" placeholder="Rango de precios" formControlName="price">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>CUIT</label>
+                        <input type="number" class="form-control" placeholder="CUIT" formControlName="cuit">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Teléfono</label>
+                        <input type="number" class="form-control" placeholder="Teléfono" formControlName="phone">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- <div class="form-group mb-3">
+                        <label>Edad</label>
+                        <input type="date" class="form-control" placeholder="Edad" formControlName="age">
+                    </div> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Sexo</label>
+                        <select class="form-control" placeholder="Sexo" formControlName="sex">
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Fecha de nacimiento</label>
+                        <input type="date" class="form-control" placeholder="Edad de nacimiento" formControlName="birthdate">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Formas de pago</label>
+                        <select class="form-control" formControlName="paymentMethod" multiple>
+                            <option value="mutual">Mutual</option>
+                            <option value="particular">Particular</option>
+                            <option value="codigo">Código</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Aprovado para ejercer</label>
+                        <label class="switch form-control" >
+                            <input type="checkbox" formControlName="approved">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <img [src]="profileImage" class="img-fluid">
+                </div>
+                <div class="col-md-3">
+                    
+                </div>
+                <div class="col-md-6 files">
+                    <h3>Archivos cargados por el usuario:</h3>
+                    <div *ngFor="let item of editItem.files" class="buttons">
+                        <button class="btn primary m-1" (click)="openFile(item)" type="button">
+                            {{item}}
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="btn primary mb-4 mt-4 float-right" type="button" block [disabled]="!formObject.valid"
+                (click)="logForm(formObject.value)"><i class="fa fa-check " aria-hidden="true"></i> GUARDAR
+            </button>
+        </form>
+    </div>
+</div>

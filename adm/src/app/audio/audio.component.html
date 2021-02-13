@@ -1,0 +1,91 @@
+<div class="container-fluid">
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a [routerLink]="['/audios']"><i class="fa fa-music icon-primary"></i> Audios</a>
+        </li>
+        <li class="breadcrumb-item active"> Administrador de audios </li>
+    </ol>
+
+    <div class="container">
+        <form class="w-100 pt-3" [formGroup]="formObject" (ngSubmit)="logForm(formObject.value)">
+            <h3>Administrar audios</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Título</label>
+                        <input type="text" class="form-control" placeholder="Título" formControlName="title">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Provincias</label>
+                        <select class="form-control" placeholder="Provincia" formControlName="province">
+                            <option value="Buenos Aires">Buenos Aires</option>
+                            <!-- Capital Federal -->
+                            <option value="Catamarca">Catamarca</option>
+                            <option value="Chaco">Chaco</option>
+                            <option value="Chubut">Chubut</option>
+                            <option value="Córdoba">Córdoba</option>
+                            <option value="Corrientes">Corrientes</option>
+                            <option value="Entre Ríos">Entre Ríos</option>
+                            <option value="Formosa">Formosa</option>
+                            <option value="Jujuy">Jujuy</option>
+                            <option value="La Pampa">La Pampa</option>
+                            <option value="La Rioja">La Rioja</option>
+                            <option value="Mendoza">Mendoza</option>
+                            <option value="Misiones">Misiones</option>
+                            <option value="Neuquén">Neuquén</option>
+                            <option value="Río Negro">Río Negro</option>
+                            <option value="Salta">Salta</option>
+                            <option value="San Juan">San Juan</option>
+                            <option value="San Luis">San Luis</option>
+                            <option value="Santa Cruz">Santa Cruz</option>
+                            <option value="Santa Fe">Santa Fe</option>
+                            <option value="Santiago del Estero">Santiago del Estero</option>
+                            <option value="Tierra del Fuego">Tierra del Fuego</option>
+                            <option value="Tucumán">Tucumán</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group mb-3">
+                        <label>Descripción</label>
+                        <quill-editor formControlName="description" [styles]="{height: '200px'}"></quill-editor>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Audio
+                        </div>
+                        <div class="card-body">
+                            <div class="row"> 
+                                <div class="col">
+                                    <angular-file-uploader [config]="afuConfigThumb" (ApiResponse)="responseFile($event)">
+                                    </angular-file-uploader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Vista previa
+                        </div>
+                        <div class="card-body">
+                            <audio controls controlsList="nodownload" [src]="getAudio()" (type)="getType()" >
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn primary mb-4 mt-4 float-right" type="button" block [disabled]="!formObject.valid"
+                (click)="logForm(formObject.value)"><i class="fa fa-check " aria-hidden="true"></i> GUARDAR
+            </button>
+        </form>
+    </div>
+</div>

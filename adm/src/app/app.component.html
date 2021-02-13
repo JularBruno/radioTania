@@ -1,0 +1,23 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+        <mat-toolbar mat-list-item class="logoToolbar"><img src="assets/logo.png" class="img-fluid logoImage"></mat-toolbar>
+        <mat-nav-list [hidden]="isLoggedIn">
+            <a mat-list-item [routerLink]="['/audios']" routerLinkActive="router-link-active">Audios</a>
+            <a mat-list-item [routerLink]="['/events']" routerLinkActive="router-link-active">Eventos</a>
+            <a mat-list-item [routerLink]="['/trainings']" routerLinkActive="router-link-active">Capacitaciones</a>
+            <a mat-list-item [routerLink]="['/videos']" routerLinkActive="router-link-active">Videos</a>
+            <a mat-list-item [routerLink]="['/home']" routerLinkActive="router-link-active">Inicio</a>
+            <a class="nav-link" (click)="logout()"><i class="fa fa-sign-out"></i> Cerrar Sesión</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar class="menubar">
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button> Radio Tania v1.0
+
+        </mat-toolbar>
+        <!--The content below is only a placeholder and can be replaced.-->
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -8,4 +8,3 @@ const administratorSchema = new Schema({
 administratorSchema.plugin(require('meanie-mongoose-to-json'));
 
 export default mongoose.model('administrator', administratorSchema);
-

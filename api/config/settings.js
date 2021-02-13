@@ -8,17 +8,17 @@ const settings = {
 	},
 	baseUrl    : process.env.BASE_URL || 'http://localhost',
 	uploadDir  : process.env.UPLOAD_DIR || '../tmp',
-	imagesDir  : process.env.IMAGES_DIR || '../adm/files/',
+	imagesDir  : process.env.IMAGES_DIR || '../api/files/',
 	url        : function() {
 		return this.baseUrl + ':' + this.port
 	},
 	path       : path.normalize(path.join(__dirname, '..')),
-	port       : process.env.NODE_PORT || 3071,
+	port       : process.env.NODE_PORT || 3073,
 	database   : {
 		logging  : 'console.log',
 		timezone : '-03:00',
 		host     : 'localhost',
-		name     : 'disfren'
+		name     : 'radiotania'
 	},
 	pagging    : {
 		itemsPerPage  : 10

@@ -1,0 +1,79 @@
+<div class="container-fluid">
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a [routerLink]="['/videos']"><i class="fa fa-video-camera icon-primary"></i> Videos</a>
+        </li>
+        <li class="breadcrumb-item active"> Administrador de Videos </li>
+    </ol>
+
+    <div class="container">
+        <form class="w-100 pt-3" [formGroup]="formObject" (ngSubmit)="logForm(formObject.value)">
+            <h3>Administrar audios</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Título</label>
+                        <input type="text" class="form-control" placeholder="Título" formControlName="title">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label>Categorias</label>
+                        <select class="form-control" placeholder="Categorias" formControlName="category">
+                            <option value="Programas">Programas</option>
+                            <option value="Presentaciones">Presentaciones</option>
+                            <option value="Bandas">Bandas</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group mb-3">
+                        <label>Descripción</label>
+                        <quill-editor formControlName="description" [styles]="{height: '200px'}"></quill-editor>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <label>Link del video</label>
+                            <input type="text" class="form-control" placeholder="Video url" formControlName="videoUrl">
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Para poder integrar un video de youtube en la página es necesario que el link se obtenga de la siguiente forma:
+                                <br>
+                                1- Ingresar al video de youtube
+                                <br>
+                                2- Clickear compartir
+                                <br>
+                                3- Clickear Incorporar
+                                <br>
+                                4- Buscar dentro de todo el texto mostrado lo que está dentro de las comillas de la palabra src. Ej:
+                                <br>
+                                iframe width="560" height="315" src="<b>https://www.youtube.com/embed/3QvsRXeVqEE</b>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                                
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Vista previa
+                        </div>
+                        <div class="card-body">
+                            <iframe width="100%" height="100%"
+                            [src]="getVideo()">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn primary mb-4 mt-4 float-right" type="button" block [disabled]="!formObject.valid"
+                (click)="logForm(formObject.value)"><i class="fa fa-check " aria-hidden="true"></i> GUARDAR
+            </button>
+        </form>
+    </div>
+</div>

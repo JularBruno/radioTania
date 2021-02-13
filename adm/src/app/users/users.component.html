@@ -1,0 +1,56 @@
+<div class="container p-4">
+
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <h2 class="section-title">
+                <i class="fa fa-users icon-primary"></i> Usuarios</h2>
+        </div>
+        <div class="col-sm-6 text-right">
+            <button type="button" class="btn primary ml-2" (click)="create()">
+            <i class="fa fa-plus"></i> CREAR USUARIO</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table table-striped mt-4">
+            <thead class="thead-light">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Usuario</th>
+                    <th>Ciudad</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Cargador -->
+                <tr *ngIf="loading" class="text-center">
+                    <td colspan="6">
+                        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Cargando Usuarios...
+                    </td>
+                </tr>
+                <!-- Texto cuando no hay resultados  -->
+                <tr *ngIf="!loading && items.length == 0" class="text-center">
+                    <td colspan="6">
+                        <span class="text-muted">
+                  <i class="fa fa-close" aria-hidden="true"></i>
+                No hay usuarios para mostrar
+              </span>
+                    </td>
+                </tr>
+                <tr *ngFor="let item of items">
+                    <td width="30%">{{item.name}}</td>
+                    <td width="30%">{{item.user}}</td>
+                    <td width="30%">{{item.city}}</td>
+                    <td width="10%" class="text-right">
+                        <button type="button" class="btn primary btn-sm mr-2" (click)="edit(item)">
+                    <i class="fa fa-pencil" aria-hidden="true" ></i>
+                  </button>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="remove(item)">
+                    <i class="fa fa-close" aria-hidden="true" ></i>
+                  </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
