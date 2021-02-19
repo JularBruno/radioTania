@@ -7,6 +7,30 @@
     height: 100%;
 }
 
+.hidder {
+    padding-right: 1em;
+    .button {
+        float: right;
+        border: none;
+        background-color: $pink;
+        color: white;
+        border-radius: 10px;
+        width: 7em;
+        margin-bottom: 1rem;
+    }
+    .buttonRep {
+        float: right;
+        border: none;
+        background-color: $pink;
+        color: white;
+        border-radius: 50px;
+        width: 7em;
+        width: 6em;
+        height: 3em;
+        margin: 1em;
+       
+    }
+}
 //
 
 .box-shadow {

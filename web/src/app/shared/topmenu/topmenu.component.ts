@@ -18,6 +18,7 @@ export class TopmenuComponent implements OnInit {
   scrollPosition: number;
   formObject: any = {};
   canSend = false;
+  iframeVisibility: boolean = true;
 
   user: any;
   isUser: boolean = false;
@@ -73,4 +74,7 @@ export class TopmenuComponent implements OnInit {
     this.router.navigate(["/records"])
   }
 
+  hideIframe() {
+    this.iframeVisibility = !this.iframeVisibility;
+  }
 }
