@@ -7,51 +7,42 @@
   </div>
   <div class="line"></div>
   <div class="title">
-      <div class="row">
+      <div class="row" *ngIf="category == 'Programas'">
         <div class="col-8">
-          <h1>
-            programas
-          </h1>
+          <h1>Programas</h1>
         </div>
         <div class="col-4">
           <i class="fas fa-microphone"></i>
         </div>
       </div>
+      <div class="row" *ngIf="category == 'Presentaciones'">
+        <div class="col-8">
+          <h1>Presentaciones</h1>
+        </div>
+        <div class="col-4">
+          <i class="fas fa-user-friends"></i>
+        </div>
+      </div>
+      <div class="row" *ngIf="category == 'Bandas'">
+        <div class="col-8">
+          <h1>Bandas</h1>
+        </div>
+        <div class="col-4">
+          <i class="fas fa-guitar"></i>
+        </div>
+      </div>
     </div>
   <div class="audios">
     <ul class="list">
-      <li>
+      <li *ngFor="let item of videos">
         <div class="element">
           <h1>
-            Audio stream
+            {{item.title}}
           </h1>
-          <h3>
-            “Todas las Voces” proyecto que tiene por objetivo transmitir, 
-            difundir y valorar las producciones de: radioteatros, cuentos,
-            leyendas, mensaje al poblador rural, relato deportivo e historias
-            de todas las provincias de nuestro País.  
-          </h3>
+          <div [innerHTML]="item.description"></div>
           <iframe width="97%" height="350"
             src="https://www.youtube.com/embed/tgbNymZ7vqY">
           </iframe>
-          <hr>
-        </div>
-      </li>
-      <li>
-        <div class="element">
-          <h1>
-            Audio stream
-          </h1>
-          <h3>
-            “Todas las Voces” proyecto que tiene por objetivo transmitir, 
-            difundir y valorar las producciones de: radioteatros, cuentos,
-            leyendas, mensaje al poblador rural, relato deportivo e historias
-            de todas las provincias de nuestro País.  
-          </h3>
-          <audio controls controlsList="nodownload">
-            <source src="../../assets/song.mpeg" type="audio/mpeg" >
-          Your browser does not support the audio element.
-          </audio>
           <hr>
         </div>
       </li>

@@ -85,8 +85,8 @@ export class EventComponent extends BaseComponent {
     return this.formBuilder.group({
       id: [null],
       miniature: [null],
-      resume: [null],
-      title: [null],
+      resume: [null, Validators.required],
+      title: [null, Validators.required],
       firstImage: [null],
       description: [null],
       logo: [null],

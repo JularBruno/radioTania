@@ -15,8 +15,8 @@ export class AudiosComponent implements OnInit {
   ngOnInit() {
   }
 
-  goToPage(category) {
-    this.router.navigate(['audios/' + category]);
+  goToPage(province) {
+    this.router.navigate(['audios', province]);
   }
 
 }

@@ -1,18 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { EventsService } from '../services/events.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
-  styleUrls: ['./events.component.scss']
+  styleUrls: ['./events.component.scss'],
+  providers: [EventsService]
 })
 export class EventsComponent implements OnInit {
 
+  events: any;
+  filesUrl: string = environment.filesUrl;
+
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    public eventsService: EventsService,
+  ) { 
+    this.getEvents();
+  }
 
   ngOnInit() {
+  }
+
+  getEvents() {
+    this.eventsService.getAll({}).then(res => {
+      console.log('res ', res);
+      this.events = res;
+    });
   }
 
   goToPage(page) {
@@ -23,4 +39,14 @@ export class EventsComponent implements OnInit {
     console.log(eventId)
     this.router.navigate(["events/" + eventId])
   }
+
+  getImage(image) {
+    if(image){
+      let url = this.filesUrl + "/" + image;
+      return url;
+    } else{
+       return null;
+    }
+  }
+
 }

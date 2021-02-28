@@ -1,5 +1,19 @@
 @import "../../assets/variables";
 
+
+.title {
+    background: linear-gradient(to top, $color_2 30%, #f7f7f7 30%);
+    height: 2.7em; //watch this
+    width: 40%;
+    padding: 0em 1em 0em 1em;
+    margin-top: 1em;
+    position: relative;
+    transform: skew(-10deg);
+    .text {
+        position: absolute;
+    }
+}
+
 .div1 {
     width: 100%;
     height: 80vh;
@@ -63,40 +77,27 @@
     bottom:0px;
 }
 
-.categories {
-    width: 100%;
-    .square {
-        width: 100%;
-        text-align: center;
-        color: $mediumgray;
+.country {
+    // width: fit-content;
+    // transition: .5s ease;
+    text-align: center;
+    padding: 1em;
+    .map {
+        fill:#7c7c7c;
+        stroke:#ffffff;
+        stroke-linecap:round;
+        stroke-linejoin:round;
+        stroke-width:2;
+        height:100vh;
+        .province {
 
-        border: 3px;
-        border-radius: 10px;
-        border-style: solid;
-        border-color: $pink;
-        
-        padding: 3em;
-        margin-bottom: 3em;
-        margin-top: 3em;
-        margin-left: 1em;
-        margin-right: 1em;
-        .fas {
-            font-size: 5em;
-            transition: .5s ease;
         }
-    }
-    .square:hover .fas {
-        color: $pink;
     }
 }
 
-// .province {
-//     width: fit-content;
-//     transition: .5s ease;
-// }
-// .province:hover path{
-//     fill: $pink;
-// }
+.province:hover {
+    fill: $pink;
+}
 
 .footer-separator {
     height: 6em;

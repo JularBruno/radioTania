@@ -16,9 +16,20 @@ import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
 })
 export class HomeComponent extends BaseComponent {
 
+  formObjectDay: any;
+  dayImage: any;
+  schedule: any = {
+    monday: [],
+    tuesday: [],
+    wednesday: [],
+    thursday: [],
+    friday: [],
+    saturday: [],
+    sunday: [],
+  }
+
   formObject: any;
   filesUrl: string = environment.filesUrl;
-  admUrl: string = environment.admUrl;
   editItem: any;
   imagesObject: any = {
     logo: '',
@@ -67,7 +78,16 @@ export class HomeComponent extends BaseComponent {
     public sanitizer: DomSanitizer
   ) {
     super(router, formBuilder, route, toastr, <BaseService>homesService);
-    this.oneComponent();
+    this.formDays();
+  }
+
+  formDays() {
+    this.formObjectDay = this.formBuilder.group({
+      timeFrom: [null],
+      timeTo: [null],
+      name: [null],
+      image: [null],
+    })
   }
 
   getBaseURI() {
@@ -75,27 +95,6 @@ export class HomeComponent extends BaseComponent {
   }
   getBasesURI() {
     return '/events';
-  }
-
-  oneComponent() {
-    console.log('oneComponent()');
-    this.homesService.getAll({}).then(res => {
-      console.log('res ', res);
-      if(res.length === 0) {
-        let values = {
-          description: '',
-          slideTitle: ''
-        };
-
-        this.logForm(values);
-        
-      } else {
-        // window.location.href = this.admUrl + '/home/' + res[0].id;
-        console.log('res[0] ', res[0]);
-        this.getFormEdit(res[0]);
-      }
-    })
-
   }
 
   getFormNew() {
@@ -106,13 +105,15 @@ export class HomeComponent extends BaseComponent {
       slideTitle: [null],
       slideImages: [null],
     })
-  }
-  
+  }  
 
   getFormEdit(item) { ///
-    this.editItem = item;
+    console.log('item ', item);
     this.imagesObject.logo = item.logo;
     this.imagesObject.slideImages = item.slideImages;
+    if(item.schedule) {
+      this.schedule = item.schedule;
+    }
 
     return this.formBuilder.group({
       id: [item.id],
@@ -120,15 +121,17 @@ export class HomeComponent extends BaseComponent {
       logo: [item.logo],
       slideTitle: [item.slideTitle],
       slideImages: [item.slideImages],
+      schedule: [item.schedule],
     });
   }
 
-  logForm(values) { ///
+  updateValues(values) { ///
     values.logo = this.imagesObject.logo;
     values.slideImages = this.imagesObject.slideImages;
-
-    // super.logForm(values);
-    this.homesService.update(values);
+    values.schedule = this.schedule
+    this.homesService.update(values).then(() => {
+      alert('Inicio de la página actualizado!');
+    });
   }
 
   gethtmlImage(image){
@@ -136,7 +139,6 @@ export class HomeComponent extends BaseComponent {
     return url;
   }
   
-
   responseFile(event, objectVar, multiple) { //// ---- thumbnail
     if(multiple) {
       this.imagesObject[objectVar] = JSON.parse(event.response).files;
@@ -158,6 +160,28 @@ export class HomeComponent extends BaseComponent {
       return url;
     } else {
       return null;
+    }
+  }
+
+  responseFileDays(event) { //// ---- thumbnail
+    this.dayImage = JSON.parse(event.response).files[0];
+  } 
+
+  newDay(values: any, day) {
+    values.image = this.dayImage;
+    console.log('values ', values);
+    this.schedule[day].push(values);
+    this.dayImage = '';
+    console.log('this.schedule ', this.schedule);
+  }
+
+  deleteDay(item, day) {
+    console.log('item, objectVar ', item, day);
+    console.log('this.schedule ', this.schedule);
+    const index = this.schedule[day].indexOf(item);
+    console.log('index ', index);
+    if (index > -1) {
+      this.schedule[day].splice(index, 1);
     }
   }
 

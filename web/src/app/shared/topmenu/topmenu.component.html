@@ -33,19 +33,20 @@
         </nav>
     </div>
 
-    
+    <iframe *ngIf="iframeVisibility" src="http://192.99.10.29:8457/live" width="100%" scrolling="no" style="border:none; background-color: black; height: 2em;"></iframe>
 
-
+    <!-- 
     <div class="hidder" *ngIf="iframeVisibility">
         <button class="button" (click)="hideIframe()">
             Ocultar
         </button>
     </div>
-    <iframe *ngIf="iframeVisibility" src="https://radio11.argentinaservers.online/cp/widgets/player/single/?p=8236" height="110" width="100%" scrolling="no" style="border:none; background-color: black;"></iframe>
+    <iframe *ngIf="iframeVisibility" src="http://192.99.10.29:8457/live" height="110" width="100%" scrolling="no" style="border:none; background-color: black;"></iframe>
     
     <div class="hidder" *ngIf="!iframeVisibility">
         <button class="buttonRep" (click)="hideIframe()">
             Reproductor
         </button>
-    </div>
+    </div> 
+    -->
 </div>

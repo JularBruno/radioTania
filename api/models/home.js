@@ -10,6 +10,7 @@ const homeSchema = new Schema({
     slideTitle: { type: String },
     slideImages: [{ type: String }],
     // horarios
+    schedule: { type: Object },
 })
 
 homeSchema.plugin(uniqueValidator)

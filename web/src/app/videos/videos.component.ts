@@ -16,7 +16,7 @@ export class VideosComponent implements OnInit {
   }
 
   goToPage(category) {
-    this.router.navigate(['videos/' + category]);
+    this.router.navigate(['videos', category]);
   }
 
 }

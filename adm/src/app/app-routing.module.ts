@@ -11,6 +11,7 @@ import { AudiosComponent } from './audios/audios.component';
 import { EventComponent } from './event/event.component';
 import { EventsComponent } from './events/events.component';
 import { HomeComponent } from './home/home.component';
+import { HomesComponent } from './homes/homes.component';
 import { TrainingComponent } from './training/training.component';
 import { TrainingsComponent } from './trainings/trainings.component';
 import { VideoComponent } from './video/video.component';
@@ -29,7 +30,8 @@ const routes: Routes = [
   { path: 'audios/:id', component: AudioComponent },
   { path: 'events', component: EventsComponent },
   { path: 'events/:id', component: EventComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomesComponent },
+  { path: 'home/:id', component: HomeComponent },
   { path: 'trainings', component: TrainingsComponent },
   { path: 'trainings/:id', component: TrainingComponent },
   { path: 'videos', component: VideosComponent },

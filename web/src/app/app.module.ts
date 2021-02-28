@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'events', component: EventsComponent },
   { path: 'events/:id', component: EventComponent },
   { path: 'audios', component: AudiosComponent },
-  { path: 'audios/:category', component: AudioComponent },
+  { path: 'audios/:province', component: AudioComponent },
   { path: 'videos', component: VideosComponent },
   { path: 'videos/:category', component: VideoComponent },
 ];

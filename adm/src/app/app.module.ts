@@ -34,7 +34,8 @@ import { VideosComponent } from './videos/videos.component';
 import { VideoComponent } from './video/video.component';
 import { TrainingsComponent } from './trainings/trainings.component';
 import { TrainingComponent } from './training/training.component';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { HomesComponent } from './homes/homes.component'
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { HomeComponent } from './home/home.component'
     TrainingsComponent,
     TrainingComponent,
     HomeComponent,
+    HomesComponent,
   ],
   imports: [
     BrowserModule,

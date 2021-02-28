@@ -1,43 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { EventsService } from '../services/events.service';
+import { environment } from '../../environments/environment';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
-  styleUrls: ['./event.component.scss']
+  styleUrls: ['./event.component.scss'],
+  providers: [EventsService]
 })
 export class EventComponent implements OnInit {
+
+  event: any = {};
+  filesUrl: string = environment.filesUrl;
 
   isMobileResolution: boolean;
 
   imageViewImage="";
   imageViewHidden=true;
 
-  slides = [
-    {image: '../../assets/img/talleristas/AMICA.png'},
-    {image: '../../assets/img/talleristas/BERENGUER.png'},
-    {image: '../../assets/img/talleristas/CENTRA.png'},
-    {image: '../../assets/img/talleristas/COSTA FEBRE.png'},
-    {image: '../../assets/img/talleristas/COTTON.png'},
-    {image: '../../assets/img/talleristas/equipo prueba 6.png'},
-    {image: '../../assets/img/talleristas/HIDALGO.png'},
-    {image: '../../assets/img/talleristas/LERARIO.png'},
-    {image: '../../assets/img/talleristas/MONTELEONE.png'},
-    {image: '../../assets/img/talleristas/NELLI.png'},
-    {image: '../../assets/img/talleristas/PAGNUCCO.png'},
-    {image: '../../assets/img/talleristas/PATZER.png'},
-    {image: '../../assets/img/talleristas/PAVONI.png'},
-    {image: '../../assets/img/talleristas/pesoa.png'},
-    {image: '../../assets/img/talleristas/PICCINI.png'},
-    {image: '../../assets/img/talleristas/ROSA VERA.png'},
-    {image: '../../assets/img/talleristas/ZULIAN.png'},
-  ];
-
-
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    public eventsService: EventsService,
+    private route: ActivatedRoute
   ) {
     if (window.innerWidth < 768) {
       this.isMobileResolution = true;
@@ -45,18 +33,33 @@ export class EventComponent implements OnInit {
       this.isMobileResolution = false;
     }
     
+    this.getEvents();
   }
 
   ngOnInit() {
   }
 
+
+  getEvents() {
+    this.route.params.subscribe((params: any) => {
+      this.eventsService.getById(params['id']).then(res => {
+        console.log('res ', res);
+        this.event = res;
+      });
+    });
+  }
+
   interactImage(clickedImage) {
     this.imageViewHidden = !this.imageViewHidden;
     this.imageViewImage = clickedImage;
-
   }
 
+  getImage(image) {
+    if(image){
+      let url = this.filesUrl + "/" + image;
+      return url;
+    } else{
+       return null;
+    }
+  }
 }
-
-
-// trayectoria eventos capacitaciones videos  agenda cultural

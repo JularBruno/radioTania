@@ -28,40 +28,16 @@
     </div>
     <div class="events">
       <ul class="list">
-        <li (click)="goToEvent('eventId')">
+        <li *ngFor="let item of events" (click)="goToEvent(item.id)">
           <div class="row">
             <div class="col-4">
-              <img src="../../assets/img/map.jpeg" alt="">
+              <img [src]="getImage(item.miniature)" alt="">
             </div>
             <div class="col-8 text">
               <h1>
-                ENCUENTRO NACIONAL DE READIOTEATRO Y PROMOCIÓN DE LECTURA EN RADIO
+                {{item.title}}
               </h1>
-              <h3>
-                “Todas las Voces” proyecto que tiene por objetivo transmitir, 
-                difundir y valorar las producciones de: radioteatros, cuentos,
-                leyendas, mensaje al poblador rural, relato deportivo e historias
-                de todas las provincias de nuestro País.
-              </h3>
-            </div>
-          </div>
-          <hr class="divider">
-        </li>
-        <li>
-          <div class="row">
-            <div class="col-4">
-              <img src="../../assets/img/map.jpeg" alt="">
-            </div>
-            <div class="col-8 text">
-              <h1>
-                ENCUENTRO NACIONAL DE READIOTEATRO Y PROMOCIÓN DE LECTURA EN RADIO
-              </h1>
-              <h3>
-                “Todas las Voces” proyecto que tiene por objetivo transmitir, 
-                difundir y valorar las producciones de: radioteatros, cuentos,
-                leyendas, mensaje al poblador rural, relato deportivo e historias
-                de todas las provincias de nuestro País.
-              </h3>
+              <div [innerHTML]="item.resume"></div>
             </div>
           </div>
           <hr class="divider">
