@@ -12,6 +12,13 @@
             </div>
             <a class="navbar-brand" routerLink="/home">
             </a>
+            <div class="audio-player" >
+                <p>
+                <audio autoplay="autoplay" controls="controls" id="audioAJDDHR" preload="auto">
+                    <source src="https://chino.republicahosting.com:2165/live" type="audio/mpeg" /> Su navegador no soporta AUDIO.<br />
+                </audio> 
+                </p>
+            </div>
             <div class="collapse navbar-collapse" [class.show]="show" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
 
@@ -33,20 +40,6 @@
         </nav>
     </div>
 
-    <iframe *ngIf="iframeVisibility" src="http://192.99.10.29:8457/live" width="100%" scrolling="no" style="border:none; background-color: black; height: 2em;"></iframe>
+    <!-- <iframe *ngIf="iframeVisibility" src="http://192.99.10.29:8457/live" width="100%" scrolling="no" style="border:none; background-color: black; height: 2em;"></iframe> -->
 
-    <!-- 
-    <div class="hidder" *ngIf="iframeVisibility">
-        <button class="button" (click)="hideIframe()">
-            Ocultar
-        </button>
-    </div>
-    <iframe *ngIf="iframeVisibility" src="http://192.99.10.29:8457/live" height="110" width="100%" scrolling="no" style="border:none; background-color: black;"></iframe>
-    
-    <div class="hidder" *ngIf="!iframeVisibility">
-        <button class="buttonRep" (click)="hideIframe()">
-            Reproductor
-        </button>
-    </div> 
-    -->
 </div>
