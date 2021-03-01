@@ -5,53 +5,71 @@ import { Constants } from '../app.constants';
 import { environment } from '../../environments/environment';
 import { forEach } from '@angular/router/src/utils/collection';
 import { reduce } from 'rxjs/operator/reduce';
+import { HomesService } from '../services/homes.service';
+import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  providers: []
+  providers: [HomesService]
 })
 
 export class HomeComponent implements OnInit {
 
   isMobileResolution: boolean;
-
-  slides = [
-    {image: '../../assets/img/todasLasVoces/1.png'},
-    {image: '../../assets/img/todasLasVoces/2.png'},
-    {image: '../../assets/img/todasLasVoces/3.png'},
-    {image: '../../assets/img/todasLasVoces/4.png'},
-    {image: '../../assets/img/todasLasVoces/5.png'},
-    {image: '../../assets/img/todasLasVoces/6.png'},
-    {image: '../../assets/img/todasLasVoces/7.png'},
-    {image: '../../assets/img/todasLasVoces/8.png'},
-    {image: '../../assets/img/todasLasVoces/9.png'},
-    {image: '../../assets/img/todasLasVoces/10.png'},
-    {image: '../../assets/img/todasLasVoces/11.png'},
-    {image: '../../assets/img/todasLasVoces/12.png'},
-    {image: '../../assets/img/todasLasVoces/13.png'},
-  ];
-  
-
+  homeItem: any;
+  filesUrl: string = environment.filesUrl;
+  daySelected: String;
+  daySchedule: any;
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    public homesService: HomesService,
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer,
   ) {
     if (window.innerWidth < 768) {
       this.isMobileResolution = true;
     } else {
       this.isMobileResolution = false;
     }
+
+    this.getHomeItem();
   }
 
   ngOnInit() {
   }
 
+  getHomeItem() {
+    this.homesService.getAll({}).then(res => {
+      this.homeItem = res[0];
+      this.dayClicked('monday');
+    });
+  }
+
   goToPage(page) {
     this.router.navigate(['/' + page]);
   }
+
+
+  getImage(image) {
+    if(image){
+      let url = this.filesUrl + "/" + image;
+      return url;
+    } else{
+       return null;
+    }
+  }
+
+  dayClicked(day) {
+    this.daySelected = day;
+    this.daySchedule = this.homeItem.schedule[day];
+  }
+
+
 }
 
 

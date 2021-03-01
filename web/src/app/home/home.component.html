@@ -23,34 +23,10 @@
             <div class="div2">
                 <div class="row">
                     <div class="col-8">
-                        <p class="text">
-                            Caminitos de Letras Cultura es un programa radial en el cual se hace homenaje a la poesía en
-                            todas sus manifestaciones, sus directoras son Julieta Felicioni, Eugenia Felicioni, Claudia
-                            Valenzuela y Marcela Valenzuela, el programa cuenta con el elenco de Radioteatro Recuerdos y
-                            el elenco de Teatro Leído Tierra del Fuego. 
-                            <b>Trabaja promocionando la lectura en radio
-                            desde el año 2012 hasta la actualidad.</b>
-                            Transmite todos los martes de 21:00 a 23:00 hs por
-                            Radio Nacional Ushuaia FM 92.1 TDF.
-                            <br>
-                            <b>
-                                En el transcurso de los 8 años, Caminitos de Letras Cultura ha sido declarado de
-                                interés Municipal, Provincial y de Interés Educativo. En agosto del 2017 fue
-                                galardonado con el premio Susini por el Consejo de Radio de Argentores en la
-                                ciudad de Buenos Aires y en el mes de octubre de 2019 obtuvo el Premio
-                                Nacional a la Radio y Televisión Quijote de Oro, en Azul, Provincia de Buenos
-                                Aires como reconocimiento a los valores.
-                            </b>
-                            <br>
-                            Caminitos de Letras Cultura tiene el agrado de presentar en el 2020 la nueva radio cultural,
-                            educativa y federal Radiotania.com
-                            <br>
-                            Para formar parte de la grilla, participar de capacitaciones y proyectos federales Comunícate:
-                            <a href="mailto:radiotania2020@gmail.com" target="_blank">radiotania2020@gmail.com</a>
-                        </p>
+                      <div style="color: white;" [innerHTML]="homeItem.description"></div>
                     </div>
                     <div class="col-4">
-                        <img src="../../assets/img/image2.png" alt="3" class="image">
+                        <img [src]="getImage(homeItem.logo)" alt="3" class="image">
                     </div>
                 </div>
             </div>
@@ -60,14 +36,14 @@
             <div class="title">
                 <div class="text">
                     <h1>
-                        PRESENTACIÓN
+                        {{homeItem.slideTitle}}
                     </h1>
                 </div>
             </div>
-            <div class="carrusel">        
+            <div class="carrusel" *ngIf="homeItem.slideImages">
                 <carousel style="padding: 2em;">
-                    <slide *ngFor="let slide of slides; let index=index" class="slide">
-                        <img [src]="slide.image" alt="image slide" class="item">
+                    <slide *ngFor="let item of homeItem.slideImages; let index=index" class="slide">
+                        <img [src]="getImage(item)" alt="image slide" class="item">
                     </slide>
                 </carousel>
             </div>
@@ -78,7 +54,7 @@
                 <div class="row">
                     <div class="col-6" >
                         <div class="container" (click)="goToPage('audios')">
-                            <img src="../../assets/img/talleristas/BERENGUER.png" alt="Avatar" class="image" style="width:100%">
+                            <img src="../../assets/definitive/4.jpg" alt="Avatar" class="image" style="width:100%">
                             <div class="middle">
                                 <div class="text">Audios</div>
                             </div>
@@ -86,7 +62,7 @@
                     </div>
                     <div class="col-6">
                         <div class="container" (click)="goToPage('videos')">
-                            <img src="../../assets/img/talleristas/BERENGUER.png" alt="Avatar" class="image" style="width:100%">
+                            <img src="../../assets/definitive/1.jpg" alt="Avatar" class="image" style="width:100%">
                             <div class="middle">
                                 <div class="text">Videos</div>
                             </div>
@@ -94,7 +70,7 @@
                     </div>
                     <div class="col-6" (click)="goToPage('events')">
                         <div class="container">
-                            <img src="../../assets/img/talleristas/BERENGUER.png" alt="Avatar" class="image" style="width:100%">
+                            <img src="../../assets/definitive/2.jpg" alt="Avatar" class="image" style="width:100%">
                             <div class="middle">
                                 <div class="text">Eventos</div>
                             </div>
@@ -103,9 +79,10 @@
                     <!-- <div class="col-6" (click)="goToPage('asd')"> -->
                     <div class="col-6">
                         <div class="container">
-                            <img src="../../assets/img/talleristas/BERENGUER.png" alt="Avatar" class="image" style="width:100%">
+                            <img src="../../assets/definitive/3.jpg" alt="Avatar" class="image" style="width:100%">
                             <div class="middle">
                                 <div class="text">Capacitaciones</div>
+                                <h3>(no disponible)</h3>
                             </div>
                         </div>
                     </div>
@@ -131,104 +108,33 @@
         
               <!-- Schedule Top Navigation -->
               <nav class="nav nav-tabs">
-                <a class="nav-link active">LUNES</a>
-                <a class="nav-link">MARTES</a>
-                <a class="nav-link">MIÉRCOLES</a>
-                <a class="nav-link">JUEVES</a>
-                <a class="nav-link">VIERNES</a>
-                <a class="nav-link">SÁBADO</a>
-                <a class="nav-link">DOMINGO</a>
+                <a (click)="dayClicked('monday')" [ngClass]="{'active': daySelected === 'monday'}" class="nav-link">LUNES</a>
+                <a (click)="dayClicked('tuesday')" [ngClass]="{'active': daySelected === 'tuesday'}" class="nav-link">MARTES</a>
+                <a (click)="dayClicked('wednesday')" [ngClass]="{'active': daySelected === 'wednesday'}" class="nav-link">MIÉRCOLES</a>
+                <a (click)="dayClicked('thursday')" [ngClass]="{'active': daySelected === 'thursday'}" class="nav-link">JUEVES</a>
+                <a (click)="dayClicked('friday')" [ngClass]="{'active': daySelected === 'friday'}" class="nav-link">VIERNES</a>
+                <a (click)="dayClicked('saturday')" [ngClass]="{'active': daySelected === 'saturday'}" class="nav-link">SÁBADO</a>
+                <a (click)="dayClicked('sunday')" [ngClass]="{'active': daySelected === 'sunday'}" class="nav-link">DOMINGO</a>
               </nav>
         
               <div class="tab-content">
                 <div class="tab-pane show active">
                   <div class="row">
         
-                    <!-- Schedule Item 1 -->
-                    <div class="col-md-6">
+                    <div class="col-md-6" *ngFor="let item of daySchedule">
                       <div class="timetable-item">
                         <div class="timetable-item-img">
-                          <img src="https://via.placeholder.com/100x80/FFB6C1/000000" alt="Contemporary Dance">
+                          <img [src]="getImage(item.image)" alt="Contemporary Dance">
                         </div>
                         <div class="timetable-item-main">
-                          <div class="timetable-item-time">4:00pm - 5:00pm</div>
-                          <div class="timetable-item-name">Contemporary Dance</div>
+                          <div class="timetable-item-time">{{item.timeTo}} - {{item.timeTo}}</div>
+                          <div class="timetable-item-name">{{item.name}}</div>
                           <a href="#" class="btn btn-book">PLAY</a>
                           
                         </div>
                       </div>
                     </div>
-        
-                    <!-- Schedule Item 2 -->
-                    <div class="col-md-6">
-                      <div class="timetable-item">
-                        <div class="timetable-item-img">
-                          <img src="https://via.placeholder.com/100x80/00FFFF/000000" alt="Break Dance">
-                        </div>
-                        <div class="timetable-item-main">
-                          <div class="timetable-item-time">5:00pm - 6:00pm</div>
-                          <div class="timetable-item-name">Break Dance</div>
-                          <a href="#" class="btn btn-book">PLAY</a>
-                        </div>
-                      </div>
-                    </div>
-        
-                    <!-- Schedule Item 3 -->
-                    <div class="col-md-6">
-                      <div class="timetable-item">
-                        <div class="timetable-item-img">
-                          <img src="https://via.placeholder.com/100x80/8A2BE2/000000" alt="Street Dance">
-                        </div>
-                        <div class="timetable-item-main">
-                          <div class="timetable-item-time">5:00pm - 6:00pm</div>
-                          <div class="timetable-item-name">Street Dance</div>
-                          <a href="#" class="btn btn-book">PLAY</a>
-                        </div>
-                      </div>
-                    </div>
-        
-                    <!-- Schedule Item 4 -->
-                    <div class="col-md-6">
-                      <div class="timetable-item">
-                        <div class="timetable-item-img">
-                          <img src="https://via.placeholder.com/100x80/6495ED/000000" alt="Yoga">
-                        </div>
-                        <div class="timetable-item-main">
-                          <div class="timetable-item-time">7:00pm - 8:00pm</div>
-                          <div class="timetable-item-name">Yoga</div>
-                          <a href="#" class="btn btn-book">PLAY</a>
-                        </div>
-                      </div>
-                    </div>
-        
-                    <!-- Schedule Item 5 -->
-                    <div class="col-md-6">
-                      <div class="timetable-item">
-                        <div class="timetable-item-img">
-                          <img src="https://via.placeholder.com/100x80/00FFFF/000000" alt="Stretching">
-                        </div>
-                        <div class="timetable-item-main">
-                          <div class="timetable-item-time">6:00pm - 7:00pm</div>
-                          <div class="timetable-item-name">Stretching</div>
-                          <a href="#" class="btn btn-book">PLAY</a>
-                         
-                        </div>
-                      </div>
-                    </div>
-        
-                    <!-- Schedule Item 6 -->
-                    <div class="col-md-6">
-                      <div class="timetable-item">
-                        <div class="timetable-item-img">
-                          <img src="https://via.placeholder.com/100x80/008B8B/000000" alt="Street Dance">
-                        </div>
-                        <div class="timetable-item-main">
-                          <div class="timetable-item-time">8:00pm - 9:00pm</div>
-                          <div class="timetable-item-name">Street Dance</div>
-                          <a href="#" class="btn btn-book">PLAY</a>
-                        </div>
-                      </div>
-                    </div>
+
                   </div>
                 </div>
               </div>
@@ -246,8 +152,8 @@
                     </h1>
                 </div>
             </div>
-
             <hr>
+            <h2>¿Querés formar parte de Radio Tania? Escribinos!</h2>
             <div class="container">
                 <form>
                     <div class="form-group">

@@ -171,7 +171,7 @@ export class HomeComponent extends BaseComponent {
     values.image = this.dayImage;
     console.log('values ', values);
     this.schedule[day].push(values);
-    this.dayImage = '';
+    // this.dayImage = '';
     console.log('this.schedule ', this.schedule);
   }
 

@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-          <div style="width: 100%; height: 100%; text-align: center; margin: 2em 0em 2em 0em;" *ngIf="event.secondImage === ''"> 
+          <div style="width: 100%; height: 100%; text-align: center; margin: 2em 0em 2em 0em;" *ngIf="event.secondImage !== ''"> 
               <img [src]="getImage(event.secondImage)" alt="map" style="width: 70%; height: 100%;">
           </div>
           <div class="title" *ngIf="event.titleVideo">
@@ -40,7 +40,8 @@
           </div>
   
           <div class="div6" *ngIf="event.titleVideo">
-              <iframe width="560" height="315" (src)="event.videoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe width="560" height="315" [src]="event.videoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/TXL-AjkFpJA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
           </div>
   
           <div class="title" *ngIf="event.titlePhotos">
@@ -54,9 +55,16 @@
           <div class="div7" *ngIf="event.titlePhotos">
               
               <div class="row">
-                  <div class="col-4 col-left" *ngFor="let item of event.photosRow">
-                      <img [src]="getImage(item)" alt="3" class="image" (click)="interactImage(item)">
+                  <!-- <div class="col-4 col-left" *ngFor="let item of event.photosRow"> -->
+                  <div style="margin-top: 1em;" class="col-4" *ngFor="let item of event.photosRow">
+                    <img [src]="getImage(item)" alt="3" class="image" (click)="interactImage(item)">
                   </div>
+                  
+                  <!-- <div class="col-4" *ngFor="let item of event.photosRow; let index=index"  [attr.data-index]="index">
+                      <div [ngClass]="{'col-left': item.index === 0,'col-middle': item.index === 1, 'col-right': item.index === 2}" >
+                        <img [src]="getImage(item)" alt="3" class="image" (click)="interactImage(item)">
+                      </div>
+                  </div> -->
               </div>
           </div>
   
@@ -70,7 +78,7 @@
   
           <div class="div8" *ngIf="event.titleCarrousel">
               <carousel style="padding: 2em;">
-                  <slide *ngFor="let slide of event.carrouselPhotos; let index=index" class="slide">
+                  <slide *ngFor="let item of event.carrouselPhotos; let index=index" class="slide">
                       <img [src]="getImage(item)" alt="image slide" class="item">
                   </slide>
               </carousel>

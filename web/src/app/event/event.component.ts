@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { EventsService } from '../services/events.service';
 import { environment } from '../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-event',
@@ -25,7 +26,8 @@ export class EventComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     public eventsService: EventsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer,
   ) {
     if (window.innerWidth < 768) {
       this.isMobileResolution = true;
@@ -33,17 +35,18 @@ export class EventComponent implements OnInit {
       this.isMobileResolution = false;
     }
     
-    this.getEvents();
+    this.getEvent();
   }
 
   ngOnInit() {
   }
 
 
-  getEvents() {
+  getEvent() {
     this.route.params.subscribe((params: any) => {
       this.eventsService.getById(params['id']).then(res => {
         console.log('res ', res);
+        res.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(res.videoUrl);
         this.event = res;
       });
     });
@@ -51,7 +54,7 @@ export class EventComponent implements OnInit {
 
   interactImage(clickedImage) {
     this.imageViewHidden = !this.imageViewHidden;
-    this.imageViewImage = clickedImage;
+    this.imageViewImage = this.getImage(clickedImage);
   }
 
   getImage(image) {
