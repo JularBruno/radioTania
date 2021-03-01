@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 })
 
 export class AudioComponent implements OnInit {
-
+  isMobileResolution: boolean;
   audios: any;
   province: String;
   filesUrl: string = environment.filesUrl;
@@ -24,7 +24,11 @@ export class AudioComponent implements OnInit {
    }
 
   ngOnInit() {
-    
+    if (window.innerWidth < 768) {
+      this.isMobileResolution = true;
+    } else {
+      this.isMobileResolution = false;
+    }
   }
 
   getAudios() {

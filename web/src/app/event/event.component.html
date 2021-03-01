@@ -18,11 +18,11 @@
             </div>
 
             <div class="div5">
-                <div class="row">
-                    <div class="col-8">
+                <div class="row" style="padding: 1rem;">
+                    <div class="col-8" style="font-size: 15px; font-style: italic;">
                         <div [innerHTML]="event.description"></div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-4" style="margin-top: 10%;">
                         <img [src]="getImage(event.logo)" alt="3" class="image">
                     </div>
                 </div>
@@ -34,6 +34,7 @@
           <div class="title" *ngIf="event.titleVideo">
               <div class="text">
                   <h1>
+                      
                     {{event.titleVideo}}
                   </h1>
               </div>
@@ -125,258 +126,156 @@
 
 
 <div *ngIf="isMobileResolution == true">
-  <div class="imageView-mobile"  [hidden]="imageViewHidden">
-      <div class="text">
-          <button class="button" (click)="interactImage('')">
-              <h3>Cerrar</h3>
-          </button>
-      </div>
-      <div class="imageDiv-mobile">
-          <img [src]="imageViewImage" alt="3" class="image">
-      </div>
-  </div>
-  <div>
-      <div class="container">
 
-          <div class="text">
-              <h1 style="font-size: 3em">CAMINITOS DE LETRAS CULTURA</h1>
-          </div>
+    <div class="imageView-mobile"  [hidden]="imageViewHidden">
+        <div class="text">
+            <button class="button" (click)="interactImage('')">
+                <h3>Cerrar</h3>
+            </button>
+        </div>
+        <div class="imageDiv-mobile">
+            <img [src]="imageViewImage" alt="3" class="image">
+        </div>
+    </div>
+    <div>
+        <div class="container">
+              <div class="div4-mobile">
+                  <h1>{{event.title}}</h1>
+                  <img [src]="getImage(event.firstImage)" alt="3" class="image">
+              </div>
+  
+              <div class="div5-mobile">
+                  <div class="row" style="padding: 1rem;">
+                      <div class="col-12" style="font-size: 10px; font-style: italic;">
+                          <div [innerHTML]="event.description"></div>
+                      </div>
+                      <div class="col-12" style="margin-top: 10%;">
+                          <img [src]="getImage(event.logo)" alt="3" class="image">
+                      </div>
+                  </div>
+              </div>
+  
+            <div style="width: 100%; height: 100%; text-align: center; margin: 2em 0em 2em 0em;" *ngIf="event.secondImage !== ''"> 
+                <img [src]="getImage(event.secondImage)" alt="map" style="width: 70%; height: 100%;">
+            </div>
+            <div class="title" *ngIf="event.titleVideo">
+                <div class="text">
+                    <h1>
+                      {{event.titleVideo}}
+                    </h1>
+                </div>
+            </div>
+    
+            <div class="div6-mobile" *ngIf="event.titleVideo">
+                <iframe width="560" height="315" [src]="event.videoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/TXL-AjkFpJA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+            </div>
+    
+            <div class="title-mobile" *ngIf="event.titlePhotos">
+                <div class="text">
+                    <h1>
+                      {{event.titlePhotos}}
+                    </h1>
+                </div>
+            </div>
+    
+            <div class="div7-mobile" *ngIf="event.titlePhotos">
+                
+                <div class="row">
+                    <!-- <div class="col-4 col-left" *ngFor="let item of event.photosRow"> -->
+                    <div style="margin-top: 1em;" class="col-4" *ngFor="let item of event.photosRow">
+                      <img [src]="getImage(item)" alt="3" class="image" (click)="interactImage(item)">
+                    </div>
+                    
+                    <!-- <div class="col-4" *ngFor="let item of event.photosRow; let index=index"  [attr.data-index]="index">
+                        <div [ngClass]="{'col-left': item.index === 0,'col-middle': item.index === 1, 'col-right': item.index === 2}" >
+                          <img [src]="getImage(item)" alt="3" class="image" (click)="interactImage(item)">
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+    
+            <div class="title-mobile" *ngIf="event.titleCarrousel">
+                <div class="text">
+                    <h1>
+                      {{event.titleCarrousel}}
+                    </h1>
+                </div>
+            </div>
+    
+            <div class="div8-mobile" *ngIf="event.titleCarrousel">
+                <carousel style="padding: 2em;">
+                    <slide *ngFor="let item of event.carrouselPhotos; let index=index" class="slide">
+                        <img [src]="getImage(item)" alt="image slide" class="item">
+                    </slide>
+                </carousel>
+            </div>
+    
+            <div class="title-mobile" *ngIf="event.titleLink">
+                <div class="text">
+                    <h1>
+                      {{event.titleLink}}
+                    </h1>
+                </div>
+            </div>
+    
+            <div class="div9-mobile" (onclick)="window.open(event.link, '_blank')" *ngIf="event.titleLink">
+                <div class="text" >
+                    <h2>
+                      {{event.linkText}}
+                    </h2>
+                </div>
+                <div class="line"></div>
+            </div>
+    
+            <div class="title-mobile" *ngIf="event.textBottom">
+                <div class="text">
+                    <h1>
+                      {{event.textBottom}}
+                    </h1>
+                </div>
+            </div>
+    
+            <div class="div10-mobile" *ngIf="event.textBottom">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" *ngFor="let item of event.bottomImages">
+                        <img [src]="getImage(item)" alt="3" class="image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-          <div class="div1-mobile">
-              <img src="../../assets/img/image1.png" alt="3" class="image">
-              
-              <!-- <div class="text">
-                  <h1 style="font-size: 30px">CAMINITOS DE LETRAS CULTURA</h1>
-              </div> -->
-              <!-- <div style="height: 1em;"></div> -->
-              <div class="bottom">
-                  <div class="text">
-                      <h2>
-                          WWW.RADIOTANIA.COM
-                      </h2>
-                  </div>
+    <div class="footer-separator">
+        <div class="footer-separator">
+          <footer class="pt-4 my-md-5 pt-md-5 border-top">
+            <div class="row" style="padding: 1rem;">
+              <div class="col-12 col-md" style="padding-left: 5vh;">
+                <img class="mb-2" src="assets/img/image2.png" alt="" width="50" height="50">
+                <small class="d-block mb-3 text-muted">&copy; RADIO TANIA</small>
               </div>
-          </div>
-          <!-- <div class="line">
-  
-          </div> -->
-  
-          <div class="div2-mobile">
-              <div class="row">
-                  <div class="col-12">
-                      <p class="text">
-                          Caminitos de Letras Cultura es un programa radial en el cual se hace homenaje a la poesía en
-                          todas sus manifestaciones, sus directoras son Julieta Felicioni, Eugenia Felicioni, Claudia
-                          Valenzuela y Marcela Valenzuela, el programa cuenta con el elenco de Radioteatro Recuerdos y
-                          el elenco de Teatro Leído Tierra del Fuego. 
-                          <b>Trabaja promocionando la lectura en radio
-                          desde el año 2012 hasta la actualidad.</b>
-                          Transmite todos los martes de 21:00 a 23:00 hs por
-                          Radio Nacional Ushuaia FM 92.1 TDF.
-                          <br>
-                          <b>
-                              En el transcurso de los 8 años, Caminitos de Letras Cultura ha sido declarado de
-                              interés Municipal, Provincial y de Interés Educativo. En agosto del 2017 fue
-                              galardonado con el premio Susini por el Consejo de Radio de Argentores en la
-                              ciudad de Buenos Aires y en el mes de octubre de 2019 obtuvo el Premio
-                              Nacional a la Radio y Televisión Quijote de Oro, en Azul, Provincia de Buenos
-                              Aires como reconocimiento a los valores.
-                          </b>
-                          <br>
-                          Caminitos de Letras Cultura tiene el agrado de presentar en el 2020 la nueva radio cultural,
-                          educativa y federal Radiotania.com
-                          <br>
-                          Para formar parte de la grilla, participar de capacitaciones y proyectos federales Comunícate:
-                          <a href="mailto:radiotania2020@gmail.com" target="_blank">radiotania2020@gmail.com</a>
-                      </p>
-                  </div>
-                  <div class="col-12">
-                      <img src="../../assets/img/image2.png" alt="3" class="image">
-                  </div>
+              <div class="col-4 col-md">
+                <h5 style="font-size: 0.8rem">INSTAGRAM</h5>
+                <ul class="list-unstyled text-small">
+                  <li><a class="text-muted" href="#" style="font-size: 0.8rem;">@radiotania</a></li>
+                </ul>
               </div>
-          </div>
-          
-          <div class="title-mobile">
-              <div class="text">
-                  <h1>
-                      ESCUCHANOS!
-                  </h1>
+              <div class="col-4 col-md">
+                <h5 style="font-size: 0.8rem">CONTACTANOS</h5>
+                <ul class="list-unstyled text-small">
+                  <li><a class="text-muted" href="#" style="font-size: 0.8rem;">3518484782</a></li>
+           
+                </ul>
               </div>
-          </div>
-  
-          <div class="div3-mobile">
-              <iframe src="https://radio11.argentinaservers.online/cp/widgets/player/single/?p=8236" height="110" width="100%" scrolling="no" style="border:none;"></iframe>
-          </div>
-
-          <div style="width: 100%; height: 100%; text-align: center; margin: 2em 0em 2em 0em;"> 
-              <img src="../../assets/img/map.jpeg" alt="map" style="width: 100%; height: 100%;" (click)="interactImage('../../assets/img/map.jpeg')">
-          </div>
-          
-          <div class="div4-mobile">
-              <h1 style="font-size: 30px">ENCUENTRO NACIONAL DE READIOTEATRO Y PROMOCIÓN DE LECTURA EN RADIO</h1>
-              <img src="../../assets/img/image3.png" alt="3" class="image">
-          </div>
-          
-  
-          <div class="div5-mobile">
-              <div class="row">
-                  <div class="col-12">
-                      <!-- <p class="text" style="font-size: 12px;">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-                          veniam
-                      </p> -->
-
-                      <p class="text">
-                          Encuentro Nacional de Radioteatro y Promoción de Lectura,
-                          <br>
-                          Celebrando el Centenario de la Radio se realizará en todo el país el Encuentro Nacional
-                          de Radioteatro y Promoción de Lectura en radio, bajo la consigna «Todas las radios,
-                          todas las provincias, todas las voces». El evento tendrá lugar del 5 al 8 de septiembre y
-                          contará con un espacio de capacitaciones virtuales. Del evento podrán participar
-                          personas de todas las provincias del país, especialmente elencos de radioteatro,
-                          actores, actrices, autores, autoras, programas radiales educativos, narradores,
-                          locutores, relatores deportivos, promotores de lectura en radio, dramaturgos,
-                          guionistas, productores, etc.
-                          <br>
-                          En la actualidad nos encontramos difundiendo “Todas las Voces” proyecto que tiene
-                          por objetivo transmitir, difundir y valorar las producciones de: radioteatros, cuentos,
-                          leyendas, mensaje al poblador rural, relato deportivo e historias de todas las
-                          provincias de nuestro País.
-                          <br>
-                          Dirección y Producción: Caminitos de Letras Cultura: 
-                          <a style="color: black;" href="mailto:lapoesiycuento12@gmail.com" target="_blank"> lapoesiycuento12@gmail.com</a>
-                      </p>
-                  </div>
-                  <div class="col-12">
-                      <img src="../../assets/img/image4.png" alt="3" class="image">
-                  </div>
+              <div class="col-4 col-md">
+                  <h5 style="font-size: 0.8rem">NUSTRO CORREO</h5>
+                <ul class="list-unstyled text-small">
+                  <li><a class="text-muted" href="#" style="font-size: 0.8rem;">radiotania@gmail.com</a></li>
+                </ul>
               </div>
-          </div>
-          
-          <div class="title-mobile">
-              <div class="text">
-                  <h1>
-                      PRESENTACIÓN
-                  </h1>
-              </div>
-          </div>
-  
-          <div class="div6-mobile">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/TXL-AjkFpJA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-  
-          <div class="title">
-              <div class="text">
-                  <h1>
-                      CRONOGRAMAS
-                  </h1>
-              </div>
-          </div>
-  
-          <div class="div7-mobile">
-              
-              <div class="row">
-                  <div class="col-12 col-left">
-                      <img src="../../assets/img/cronogramas/1.png" alt="3" class="image" (click)="interactImage('../../assets/img/cronogramas/1.png')">
-                  </div>
-                  <div class="col-12 col-middle">
-                      <img src="../../assets/img/cronogramas/2.png" alt="3" class="image" (click)="interactImage('../../assets/img/cronogramas/2.png')">
-                  </div>
-                  <div class="col-12 col-right">
-                      <img src="../../assets/img/cronogramas/3.png" alt="3" class="image" (click)="interactImage('../../assets/img/cronogramas/3.png')">
-                  </div>
-              </div>
-          </div>
-  
-          <div class="title-mobile">
-              <div class="text">
-                  <h1>
-                      TALLERISTAS
-                  </h1>
-              </div>
-          </div>
-  
-          <div class="div8-mobile">        
-              <carousel style="padding: 2em;">
-                  <slide *ngFor="let slide of slides; let index=index" class="slide">
-                      <img [src]="slide.image" alt="image slide" class="item">
-                  </slide>
-              </carousel>
-          </div>
-  
-          <div class="title-mobile">
-              <div class="text">
-                  <h1>
-                      INSCRIPCIÓN
-                  </h1>
-              </div>
-          </div>
-  
-          <div class="div9-mobile" onclick="window.open('https://forms.gle/25QBWWCpFrsbe4zm8', '_blank')">
-  
-          <!-- <div class="div9" onClick="window.location='https://forms.gle/25QBWWCpFrsbe4zm8'; target='_blank'"> -->
-  
-              <div class="text" >
-                  <h2>
-                      FORMULARIO DE INSCRIPCIÓN
-                  </h2>
-              </div>
-              <div class="line">
-  
-              </div>
-          </div>
-  
-          <div class="title-mobile">
-              <div class="text">
-                  <h1>
-                      ACOMPAÑAN
-                  </h1>
-              </div>
-          </div>
-  
-          <div class="div10-mobile">
-              <div class="row">
-                  <div class="col-6">
-                      <img src="../../assets/img/acompa/1.png" alt="3" class="image">
-                  </div>
-                  <div class="col-6">
-                      <img src="../../assets/img/acompa/2.png" alt="3" class="image">
-                  </div>
-                  <div class="col-6 col-left">
-                      <img src="../../assets/img/acompa/3.png" alt="3" class="image">
-                  </div>
-                  <div class="col-6 col-left">
-                      <img src="../../assets/img/acompa/4.png" alt="3" class="image">
-                  </div>
-                  <div class="col-6 col-left">
-                      <img src="../../assets/img/acompa/5.png" alt="3" class="image">
-                  </div>
-                  <div class="col-6 col-left">
-                      <img src="../../assets/img/acompa/6.png" alt="3" class="image">
-                  </div>
-                  <div class="col-6 col-left">
-                      <img src="../../assets/img/acompa/7.png" alt="3" class="image">
-                  </div>
-                  <div class="col-6 col-left">
-                      <img src="../../assets/img/acompa/8.png" alt="3" class="image">
-                  </div>
-                  <div class="col-6 col-left">
-                      <img src="../../assets/img/acompa/9.png" alt="3" class="image">
-                  </div>
-                  <div class="col-6 col-left">
-                      <img src="../../assets/img/acompa/10.png" alt="3" class="image">
-                  </div>
-                  <div class="col-6 col-left">
-                      <img src="../../assets/img/acompa/11.png" alt="3" class="image">
-                  </div>
-                  <div class="col-6 col-left">
-                      <img src="../../assets/img/acompa/12.png" alt="3" class="image">
-                  </div>
-              </div>
+            </div>
+          </footer>  
           </div>
       </div>
   </div>
-
-</div>
 

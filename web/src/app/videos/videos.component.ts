@@ -8,11 +8,18 @@ import { Router } from '@angular/router';
 })
 export class VideosComponent implements OnInit {
 
+  isMobileResolution: boolean;
   constructor(
+    
     private router: Router
   ) { }
 
   ngOnInit() {
+    if (window.innerWidth < 768) {
+      this.isMobileResolution = true;
+    } else {
+      this.isMobileResolution = false;
+    }
   }
 
   goToPage(category) {

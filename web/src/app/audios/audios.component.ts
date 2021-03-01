@@ -7,12 +7,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./audios.component.scss']
 })
 export class AudiosComponent implements OnInit {
-
+  isMobileResolution: boolean;
   constructor(
     private router: Router
   ) { }
 
   ngOnInit() {
+    if (window.innerWidth < 768) {
+      this.isMobileResolution = true;
+    } else {
+      this.isMobileResolution = false;
+    }
   }
 
   goToPage(province) {
