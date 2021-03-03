@@ -2,15 +2,16 @@
 
 
 .title {
-    background: linear-gradient(to top, $color_2 30%, #f7f7f7 30%);
-    height: 2.7em; //watch this
-    width: 40%;
+    width: 100%;
     padding: 0em 1em 0em 1em;
     margin-top: 1em;
     position: relative;
     transform: skew(-10deg);
+    height: 2.7em; //watch this
     .text {
+        height: 2.7em; //watch this
         position: absolute;
+        background: linear-gradient(to top, $color_2 30%, #f7f7f7 30%);
     }
 }
 
@@ -78,6 +79,128 @@
 }
 
 .country {
+    // width: fit-content;
+    // transition: .5s ease;
+    text-align: center;
+    padding: 1em;
+    .map {
+        fill:#7c7c7c;
+        stroke:#ffffff;
+        stroke-linecap:round;
+        stroke-linejoin:round;
+        stroke-width:2;
+        height:100vh;
+        .province {
+
+        }
+    }
+}
+
+.province:hover {
+    fill: $pink;
+}
+
+.footer-separator {
+    height: 6em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// mobile
+
+
+
+
+.title-mobile {
+    width: 100%;
+    padding: 0em 1em 0em 1em;
+    margin-top: 1em;
+    position: relative;
+    transform: skew(-10deg);
+    height: 2.7em; //watch this
+    .text {
+        height: 2.7em; //watch this
+        position: absolute;
+        background: linear-gradient(to top, $color_2 30%, #f7f7f7 30%);
+    }
+}
+
+.div1-mobile {
+    width: 100%;
+    height: 60vh;
+    position: relative;
+
+    background-image: url("../../assets/definitive/4.jpg");
+    background-size: 50%;
+    background-position-x: right;
+    background-position-y: center;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .image {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .text {
+        position: absolute;
+        color: $color_4;
+        h1 {
+            font-size: 3rem;
+            margin-top: 2em;
+        }
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+}
+
+.div2-mobile {
+    margin-top: 1em;
+    background-color: $dark;
+    .image {
+        width: 70%;
+        // height: 100%;
+        padding: 1em;
+    }
+
+    .text {
+        // display: flex;
+        align-items: center;
+        color: white;
+        padding: 2em;
+        margin: 0em;
+        height: 100%;
+        font-size: 0.8rem;
+        br {
+            margin: 0.3em;
+        }
+    }
+}
+
+.line-mobile {
+    background: $dark;
+    width: 100%;
+    height: 1em;
+    bottom:0px;
+}
+
+.country-mobile {
     // width: fit-content;
     // transition: .5s ease;
     text-align: center;

@@ -11,6 +11,7 @@ import { environment } from '../../environments/environment';
 })
 export class EventsComponent implements OnInit {
 
+  isMobileResolution: boolean;
   events: any;
   filesUrl: string = environment.filesUrl;
 
@@ -18,6 +19,11 @@ export class EventsComponent implements OnInit {
     private router: Router,
     public eventsService: EventsService,
   ) { 
+    if (window.innerWidth < 768) {
+      this.isMobileResolution = true;
+    } else {
+      this.isMobileResolution = false;
+    }
     this.getEvents();
   }
 

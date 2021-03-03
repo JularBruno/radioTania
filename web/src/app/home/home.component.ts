@@ -19,10 +19,17 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser
 export class HomeComponent implements OnInit {
 
   isMobileResolution: boolean;
-  homeItem: any;
   filesUrl: string = environment.filesUrl;
+
+  homeItem: any = {
+    slideImages: [],
+    description: ''
+  };
+
   daySelected: String;
   daySchedule: any;
+
+  formObject: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,10 +45,28 @@ export class HomeComponent implements OnInit {
     }
 
     this.getHomeItem();
+    this.formNew();
   }
 
   ngOnInit() {
   }
+
+  formNew() {
+    this.formObject = this.formBuilder.group({
+      mail: [null, Validators.required],
+      phone: [null],
+      message: [null, Validators.required],
+    })
+  }
+
+
+  logForm(value) {
+    console.log('mail ', value);
+    this.homesService.sendMail(value).then( res=> {
+      console.log('res ', res);
+    });
+  }
+
 
   getHomeItem() {
     this.homesService.getAll({}).then(res => {

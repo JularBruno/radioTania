@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   providers: [VideosService]
 })
 export class VideoComponent implements OnInit {
-
+  isMobileResolution: boolean;
   videos: any;
   category: String = '';
 
@@ -17,6 +17,11 @@ export class VideoComponent implements OnInit {
     public videosService: VideosService,
     private route: ActivatedRoute
   ) {
+    if (window.innerWidth < 768) {
+      this.isMobileResolution = true;
+    } else {
+      this.isMobileResolution = false;
+    }
     this.getVideos()
   }
 

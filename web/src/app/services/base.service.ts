@@ -118,6 +118,17 @@ export class BaseService {
       .catch(err => this.handleError.bind(err));
   }
 
+  sendMail(occurrence): Promise<any> {
+
+    const url = environment.serverUrl + this.getApiEndPoint() + '/mail';
+
+    return this.http.post(url, occurrence)
+      .toPromise()
+      .then(response =>
+        response.json()
+      )
+      .catch(this.handleError.bind(this));
+  }
 
   handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only

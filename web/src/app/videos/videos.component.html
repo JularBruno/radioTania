@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="isMobileResolution == false">
   <div class="container">
     <div class="div1">
         <div class="text">
@@ -82,6 +82,110 @@
             </div>
           </div>
         </footer>   
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+  mobile
+ -->
+
+ <div *ngIf="isMobileResolution == true">
+  <div class="container">
+    <div class="div1-mobile">
+        <div class="text">
+            <h1>Videos</h1>
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="div2-mobile">
+      <div class="row">
+        <div class="col-12">
+            <p class="text">
+                Caminitos de Letras Cultura es un programa radial en el cual se hace homenaje a la poesía en
+                todas sus manifestaciones, sus directoras son Julieta Felicioni, Eugenia Felicioni, Claudia
+                Valenzuela y Marcela Valenzuela, el programa cuenta con el elenco de Radioteatro Recuerdos y
+                el elenco de Teatro Leído Tierra del Fuego. 
+                <b>Trabaja promocionando la lectura en radio
+                desde el año 2012 hasta la actualidad.</b>
+                Transmite todos los martes de 21:00 a 23:00 hs por
+                Radio Nacional Ushuaia FM 92.1 TDF.
+                
+            </p>
+        </div>
+        <div class="col-12" style="text-align: center;">
+            <img src="../../assets/img/image2.png" alt="3" class="image">
+        </div>
+    </div>
+  </div>
+    <div class="categories-mobile">
+      <div class="row">
+        <div class="col-12">
+          <div class="square" (click)="goToPage('Programas')">
+            <h1 >Programas</h1>
+            <i class="fas fa-microphone"></i>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="square" (click)="goToPage('Presentaciones')">
+            <h1>Presentaciones</h1>
+            <i class="fas fa-user-friends"></i>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="square" (click)="goToPage('Bandas')">
+            <h1 >Bandas</h1>
+            <i class="fas fa-guitar"></i>
+            <!-- https://fontawesome.com/icons?d=gallery&q=camp -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <div class="footer-separator">
+    <div class="footer-separator">
+      <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row" style="padding: 1rem;">
+          <div class="col-12 col-md" style="padding-left: 5vh;">
+            <img class="mb-2" src="assets/img/image2.png" alt="" width="50" height="50">
+            <small class="d-block mb-3 text-muted">&copy; RADIO TANIA</small>
+          </div>
+          <div class="col-4 col-md">
+            <h5 style="font-size: 0.8rem">INSTAGRAM</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#" style="font-size: 0.8rem;">@radiotania</a></li>
+            </ul>
+          </div>
+          <div class="col-4 col-md">
+            <h5 style="font-size: 0.8rem">CONTACTANOS</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#" style="font-size: 0.8rem;">3518484782</a></li>
+       
+            </ul>
+          </div>
+          <div class="col-4 col-md">
+              <h5 style="font-size: 0.8rem">NUSTRO CORREO</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#" style="font-size: 0.8rem;">radiotania@gmail.com</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>  
       </div>
   </div>
 </div>

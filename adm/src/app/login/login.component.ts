@@ -59,8 +59,8 @@ export class LoginComponent implements OnInit {
         const self = this;
         // self.router.navigate(['/users']);
 
-        // let url: string = "http://35.247.250.143:3071/admin/";
-        let url: string = "http://localhost:4200/users";
+        let url: string = "http://35.247.224.51:3073/admin/";
+        // let url: string = "http://localhost:4200/users";
         window.location.href = url;
         console.log(response);
       } else {

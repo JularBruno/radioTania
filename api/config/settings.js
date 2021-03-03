@@ -13,7 +13,7 @@ const settings = {
 		return this.baseUrl + ':' + this.port
 	},
 	path       : path.normalize(path.join(__dirname, '..')),
-	port       : process.env.NODE_PORT || 3073,
+	port       : process.env.NODE_PORT || 8080,
 	database   : {
 		logging  : 'console.log',
 		timezone : '-03:00',

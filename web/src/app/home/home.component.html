@@ -21,11 +21,11 @@
             </div>
     
             <div class="div2">
-                <div class="row">
+                <div class="row" style="padding: 1rem;">
                     <div class="col-8">
                       <div style="color: white;" [innerHTML]="homeItem.description"></div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-4" style="margin-top: 10%;">
                         <img [src]="getImage(homeItem.logo)" alt="3" class="image">
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                     </h1>
                 </div>
             </div>
-            <div class="carrusel" *ngIf="homeItem.slideImages">
+            <div class="carrusel">
                 <carousel style="padding: 2em;">
                     <slide *ngFor="let item of homeItem.slideImages; let index=index" class="slide">
                         <img [src]="getImage(item)" alt="image slide" class="item">
@@ -129,7 +129,7 @@
                         <div class="timetable-item-main">
                           <div class="timetable-item-time">{{item.timeTo}} - {{item.timeTo}}</div>
                           <div class="timetable-item-name">{{item.name}}</div>
-                          <a href="#" class="btn btn-book">PLAY</a>
+                          <!-- <a href="#" class="btn btn-book">PLAY</a> -->
                           
                         </div>
                       </div>
@@ -155,21 +155,21 @@
             <hr>
             <h2>¿Querés formar parte de Radio Tania? Escribinos!</h2>
             <div class="container">
-                <form>
+                <form [formGroup]="formObject" (ngSubmit)="logForm(formObject.value)">
                     <div class="form-group">
                       <label for="mail">Correo electrónico</label>
-                      <input type="email" class="form-control" id="mail"  placeholder="Ingresar email">
+                      <input type="email" class="form-control" id="mail" formControlName="mail" placeholder="Ingresar email">
                     </div>
                     <div class="form-group">
                         <label for="telefono">Teléfono</label>
-                        <input type="password" class="form-control" id="telefono"  placeholder="Ingresar número de teléfono">
+                        <input type="number" class="form-control" id="telefono"  formControlName="phone" placeholder="Ingresar número de teléfono">
                       </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Opinión</label>
-                      <textarea class="form-control" aria-label="With textarea" placeholder="Ingresar aquí el texto"></textarea>
+                      <label for="exampleInputPassword1">Mensaje</label>
+                      <textarea class="form-control" aria-label="With textarea" formControlName="message" placeholder="Ingresar aquí el texto"></textarea>
                     </div>
                     
-                    <button type="submit" class="btn btn-class btn-block">ENVIAR</button>
+                    <button type="submit" class="btn btn-class btn-block" [disabled]="!formObject.valid">ENVIAR</button>
                   </form>
             </div>
         </div>
@@ -205,4 +205,217 @@
       </footer>   
     </div>
 </div>
+
+
+<!-- MOBILE -->
+
+
+<div *ngIf="isMobileResolution == true">
+  <div>
+      <div class="container">
+          <div class="div1-mobile">
+              <!-- <img src="../../assets/img/image1.png" alt="3" class="image"> -->
+  
+              <div class="text-mobile">
+                  <h1>CAMINITOS DE LETRAS CULTURA</h1>
+              </div>
+              <!-- <div style="height: 1em;"></div> -->
+              <div class="bottom-mobile">
+                  <div class="text-mobile" >
+                      <h2 style="font-size: 1rem;">
+                          WWW.RADIOTANIA.COM
+                      </h2>
+                  </div>
+              </div>
+          </div>
+          <div class="line-mobile">
+  
+          </div>
+  
+          <div class="div2-mobile">
+              <div class="row" style="padding: 1rem;">
+                  <div class="col-12" style="font-style: italic;">
+                    <div style="color: white;" [innerHTML]="homeItem.description"></div>
+                  </div>
+                  <div class="col-12" style="margin-top: 10%;">
+                      <img [src]="getImage(homeItem.logo)" style="width: 100% !important;" alt="3" class="image">
+                  </div>
+              </div>
+          </div>
+
+          <!-- SLIDES -->
+
+          <div class="title-mobile">
+              <div class="text-mobile">
+                  <h1>
+                      {{homeItem.slideTitle}}
+                  </h1>
+              </div>
+          </div>
+          <div class="carrusel" *ngIf="homeItem.slideImages">
+              <carousel style="padding: 2em;">
+                  <slide *ngFor="let item of homeItem.slideImages; let index=index" class="slide">
+                      <img [src]="getImage(item)" alt="image slide" class="item">
+                  </slide>
+              </carousel>
+          </div>
+
+          <!--  -->
+
+          <div class="sections">
+              <div class="row">
+                  <div class="col-6" >
+                      <div class="container" (click)="goToPage('audios')">
+                          <img src="../../assets/definitive/4.jpg" alt="Avatar" class="image" style="width:100%">
+                          <div class="middle">
+                              <div class="text-mobile">Audios</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-6">
+                      <div class="container" (click)="goToPage('videos')">
+                          <img src="../../assets/definitive/1.jpg" alt="Avatar" class="image" style="width:100%">
+                          <div class="middle">
+                              <div class="text-mobile">Videos</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-6" (click)="goToPage('events')">
+                      <div class="container">
+                          <img src="../../assets/definitive/2.jpg" alt="Avatar" class="image" style="width:100%">
+                          <div class="middle">
+                              <div class="text-mobile">Eventos</div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- <div class="col-6" (click)="goToPage('asd')"> -->
+                  <div class="col-6">
+                      <div class="container">
+                          <img src="../../assets/definitive/3.jpg" alt="Avatar" class="image" style="width:100%">
+                          <div class="middle">
+                              <div class="text-mobile">Capacitaciones</div>
+                              <h3>(no disponible)</h3>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- CALENDAR -->
+
+          <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+          <div class="title">
+              <div class="text">
+                  <h1>
+                      CALENDARIO
+                  </h1>
+              </div>
+          </div>
+<div class="idance">
+  <div class="schedule content-block">
+      <div class="container">
+      
+          <div class="timetable">
+      
+            <!-- Schedule Top Navigation -->
+            <nav class="nav nav-tabs">
+              <a (click)="dayClicked('monday')" [ngClass]="{'active': daySelected === 'monday'}" class="nav-link">LUNES</a>
+              <a (click)="dayClicked('tuesday')" [ngClass]="{'active': daySelected === 'tuesday'}" class="nav-link">MARTES</a>
+              <a (click)="dayClicked('wednesday')" [ngClass]="{'active': daySelected === 'wednesday'}" class="nav-link">MIÉRCOLES</a>
+              <a (click)="dayClicked('thursday')" [ngClass]="{'active': daySelected === 'thursday'}" class="nav-link">JUEVES</a>
+              <a (click)="dayClicked('friday')" [ngClass]="{'active': daySelected === 'friday'}" class="nav-link">VIERNES</a>
+              <a (click)="dayClicked('saturday')" [ngClass]="{'active': daySelected === 'saturday'}" class="nav-link">SÁBADO</a>
+              <a (click)="dayClicked('sunday')" [ngClass]="{'active': daySelected === 'sunday'}" class="nav-link">DOMINGO</a>
+            </nav>
+      
+            <div class="tab-content">
+              <div class="tab-pane show active">
+                <div class="row">
+      
+                  <div class="col-md-6" *ngFor="let item of daySchedule">
+                    <div class="timetable-item">
+                      <div class="timetable-item-img">
+                        <img [src]="getImage(item.image)" alt="Contemporary Dance">
+                      </div>
+                      <div class="timetable-item-main">
+                        <div class="timetable-item-time">{{item.timeTo}} - {{item.timeTo}}</div>
+                        <div class="timetable-item-name">{{item.name}}</div>
+                        <!-- <a href="#" class="btn btn-book">PLAY</a> -->
+                        
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTACTANOS -->
+
+          <div class="title-mobile">
+              <div class="text-mobile">
+                  <h1>
+                      CONTACTANOS
+                  </h1>
+              </div>
+          </div>  
+          <hr>
+          <h2 style="font-size: 1rem; padding-left: 1rem; padding-right: 1rem;">¿Querés formar parte de Radio Tania? Escribinos!</h2>
+          <div class="container" style="padding: 1rem;">
+              <form>
+                  <div class="form-group">
+                    <label for="mail">Correo electrónico</label>
+                    <input type="email" class="form-control" id="mail"  placeholder="Ingresar email">
+                  </div>
+                  <div class="form-group">
+                      <label for="telefono">Teléfono</label>
+                      <input type="password" class="form-control" id="telefono"  placeholder="Ingresar número de teléfono">
+                    </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Opinión</label>
+                    <textarea class="form-control" aria-label="With textarea" placeholder="Ingresar aquí el texto"></textarea>
+                  </div>
+                  
+                  <button type="submit" class="btn btn-class btn-block">ENVIAR</button>
+                </form>
+          </div>
+      </div>
+  </div>
+
+  <div class="footer-separator">
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+      <div class="row" style="padding: 1rem;">
+        <div class="col-12 col-md" style="padding-left: 5vh;">
+          <img class="mb-2" src="assets/img/image2.png" alt="" width="50" height="50">
+          <small class="d-block mb-3 text-muted">&copy; RADIO TANIA</small>
+        </div>
+        <div class="col-4 col-md">
+          <h5 style="font-size: 0.8rem">INSTAGRAM</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#" style="font-size: 0.8rem;">@radiotania</a></li>
+          </ul>
+        </div>
+        <div class="col-4 col-md">
+          <h5 style="font-size: 0.8rem">CONTACTANOS</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#" style="font-size: 0.8rem;">3518484782</a></li>
+     
+          </ul>
+        </div>
+        <div class="col-4 col-md">
+            <h5 style="font-size: 0.8rem">NUSTRO CORREO</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#" style="font-size: 0.8rem;">radiotania@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>   
+  </div>
+</div>
+
 

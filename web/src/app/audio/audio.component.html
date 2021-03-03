@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="isMobileResolution == false">
   <div class="container">
     <div class="div1">
       <div class="text">
@@ -65,6 +65,99 @@
             </div>
           </div>
         </footer>   
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- mobile -->
+
+
+<div *ngIf="isMobileResolution == true">
+  <div class="container">
+    <div class="div1-mobile">
+      <div class="text">
+          <h1>Audios</h1>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="title-mobile">
+        <div class="row">
+          <div class="col-8">
+            <h1>
+              {{province}}
+            </h1>
+          </div>
+          <div class="col-4">
+            <i class="fas fa-volume-up"></i>
+          </div>
+        </div>
+      </div>
+    <div class="audios-mobile">
+      <ul class="list">
+        <li *ngFor="let item of audios">
+          <div class="element">
+            <h1>
+              {{item.title}}
+            </h1>
+            <div [innerHTML]="item.description"></div>
+            <audio controls controlsList="nodownload" [src]="getAudio(item.audio)" (type)="getType(item.audio)" >
+                Your browser does not support the audio element.
+            </audio>
+            <hr>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-separator">
+    <div class="footer-separator">
+      <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row" style="padding: 1rem;">
+          <div class="col-12 col-md" style="padding-left: 5vh;">
+            <img class="mb-2" src="assets/img/image2.png" alt="" width="50" height="50">
+            <small class="d-block mb-3 text-muted">&copy; RADIO TANIA</small>
+          </div>
+          <div class="col-4 col-md">
+            <h5 style="font-size: 0.8rem">INSTAGRAM</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#" style="font-size: 0.8rem;">@radiotania</a></li>
+            </ul>
+          </div>
+          <div class="col-4 col-md">
+            <h5 style="font-size: 0.8rem">CONTACTANOS</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#" style="font-size: 0.8rem;">3518484782</a></li>
+       
+            </ul>
+          </div>
+          <div class="col-4 col-md">
+              <h5 style="font-size: 0.8rem">NUSTRO CORREO</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#" style="font-size: 0.8rem;">radiotania@gmail.com</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>  
       </div>
   </div>
 </div>

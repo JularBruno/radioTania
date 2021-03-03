@@ -94,3 +94,112 @@
 .footer-separator {
     height: 6em;
 }
+
+
+
+
+
+
+
+
+
+
+// mobile
+
+
+
+
+.div1-mobile {
+    width: 100%;
+    height: 60vh;
+    position: relative;
+
+    background-image: url("../../assets/definitive/2.jpg");
+    background-size: 50%;
+    background-position-x: right;
+    background-position-y: center;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .image-mobile {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .text-mobile {
+        position: absolute;
+        color: $color_4;
+        h1 {
+            font-size: 3rem;
+            margin-top: 2em;
+        }
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+}
+.div2-mobile {
+    margin-top: 1em;
+    background-color: $dark;
+    .image-mobile {
+        width: 70%;
+        // height: 100%;
+        padding: 1em;
+    }
+
+    .text-mobile {
+        // display: flex;
+        align-items: center;
+        color: white;
+        padding: 2em;
+        margin: 0em;
+        height: 100%;
+        font-size: 0.8rem;
+        br {
+            margin: 0.3em;
+        }
+    }
+}
+
+.line-mobile {
+    background: $dark;
+    width: 100%;
+    height: 1em;
+    bottom:0px;
+}
+
+.events-mobile {
+    .list {
+        background-color: white;
+        list-style-type: none;
+        margin-top: 2em;
+        .row {
+            padding: 1em;
+            cursor: pointer;
+            img {
+                width: 90%;
+            }
+            .text {
+                padding: 2em;
+                h1 {
+                    color: $dark;
+                    -webkit-text-fill-color: $color_3; /* Will override color (regardless of order) */
+                    -webkit-text-stroke-width: 1px;
+                    -webkit-text-stroke-color: $dark;
+                }
+            }
+        }
+        hr {
+            margin: 0em;
+            background: $pink;
+            margin-right: 2em;
+        }
+    }
+}
+
+.footer-separator {
+    height: 6em;
+}
