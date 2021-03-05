@@ -50,8 +50,8 @@ router.post('/mail', function (req, res, next) {
   
   var mailOptions = {
     from: params.mail,
-    // to: 'Radiotania2020@gmail.com',
-    to: 'brunojular00@gmail.com',
+    to: 'radiotania2020@gmail.com',
+    // to: 'brunojular00@gmail.com',
     subject: 'Mail de radiotania.com',
     text: ` telefono: ${params.telefono}
             mensaje: ${params.message}
