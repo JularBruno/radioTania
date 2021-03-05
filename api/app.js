@@ -142,12 +142,21 @@ app.use(cookieParser())
  * app.use('/speechToText', express.static(path.join(__dirname, './static/speechToText.html')));
  * app.use('/files', express.static(path.join(__dirname, './static/files/')));
  */
+
 app.use('/api', routes)
-
 app.use('/files', express.static(path.join(__dirname, '../api/files'))) 
-app.use('/', express.static(path.join(__dirname, '../web/dist/'))) // trying
 
-app.use('/', express.static(path.join(__dirname, '../adm/dist/'))) // trying
+app.use('/', express.static(path.join(__dirname, '../web/dist/'))) // trying
+app.use('/home', express.static(path.join(__dirname, '../web/dist/'))) // trying
+app.use('/events', express.static(path.join(__dirname, '../web/dist/'))) // trying
+app.use('/events/:id', express.static(path.join(__dirname, '../web/dist/'))) // trying
+app.use('/audios', express.static(path.join(__dirname, '../web/dist/'))) // trying
+app.use('/audios/:province', express.static(path.join(__dirname, '../web/dist/'))) // trying
+app.use('/videos', express.static(path.join(__dirname, '../web/dist/'))) // trying
+app.use('/videos/:category', express.static(path.join(__dirname, '../web/dist/'))) // trying
+
+
+// app.use('/', express.static(path.join(__dirname, '../adm/dist/'))) // trying
 
 app.get('/admin/*',  function(req, res) {
 	res.sendFile('index.html', { root: '../adm/dist/' })
