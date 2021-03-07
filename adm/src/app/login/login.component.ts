@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
         const self = this;
         // self.router.navigate(['/users']);
 
-        let url: string = "http://35.247.224.51:3073/admin/";
+        let url: string = "https://radiotania.com/";
         // let url: string = "http://localhost:4200/users";
         window.location.href = url;
         console.log(response);

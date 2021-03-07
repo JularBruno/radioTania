@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://localhost:3073/api',
-  filesUrl: 'http://localhost:3073/files',
+  serverUrl: 'http://localhost:8080/api',
+  filesUrl: 'http://localhost:8080/files',
   admUrl: 'http://localhost:4200'
   // serverUrl: 'http://35.247.250.143:3071/api',
   // filesUrl: 'http://35.247.250.143:3071/files',
