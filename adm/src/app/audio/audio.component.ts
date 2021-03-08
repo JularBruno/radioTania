@@ -22,7 +22,7 @@ export class AudioComponent extends BaseComponent {
 
   afuConfigThumb = {
     formatsAllowed: ".mp3,.wav",
-    maxSize: "1500",
+    maxSize: "30",
     // multiple: true,
     uploadAPI: {
       // url:"http://34.95.164.216:3071/api/files/upload"
