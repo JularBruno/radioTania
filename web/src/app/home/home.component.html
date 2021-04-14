@@ -157,11 +157,11 @@
             <div class="container">
                 <form [formGroup]="formObject" (ngSubmit)="logForm(formObject.value)">
                     <div class="form-group">
-                      <label for="mail">Correo electrónico</label>
+                      <label for="mail">Tu correo electrónico</label>
                       <input type="email" class="form-control" id="mail" formControlName="mail" placeholder="Ingresar email">
                     </div>
                     <div class="form-group">
-                        <label for="telefono">Teléfono</label>
+                        <label for="telefono">Teléfono de contacto</label>
                         <input type="number" class="form-control" id="telefono"  formControlName="phone" placeholder="Ingresar número de teléfono">
                       </div>
                     <div class="form-group">
@@ -173,36 +173,6 @@
                   </form>
             </div>
         </div>
-    </div>
-
-    <div class="footer-separator">
-    <footer class="pt-4 my-md-5 pt-md-5 border-top">
-        <div class="row">
-          <div class="col-12 col-md" style="padding-left: 5vh;">
-            <img class="mb-2" src="assets/img/image2.png" alt="" width="50" height="50">
-            <small class="d-block mb-3 text-muted">&copy; RADIO TANIA</small>
-          </div>
-          <div class="col-6 col-md">
-            <h5>INSTAGRAM</h5>
-            <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">@radiotania</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md">
-            <h5>CONTACTANOS</h5>
-            <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">3518484782</a></li>
-       
-            </ul>
-          </div>
-          <div class="col-6 col-md">
-              <h5>NUSTRO CORREO</h5>
-            <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">radiotania@gmail.com</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>   
     </div>
 </div>
 
@@ -367,55 +337,26 @@
           <hr>
           <h2 style="font-size: 1rem; padding-left: 1rem; padding-right: 1rem;">¿Querés formar parte de Radio Tania? Escribinos!</h2>
           <div class="container" style="padding: 1rem;">
-              <form>
-                  <div class="form-group">
-                    <label for="mail">Correo electrónico</label>
-                    <input type="email" class="form-control" id="mail"  placeholder="Ingresar email">
-                  </div>
-                  <div class="form-group">
-                      <label for="telefono">Teléfono</label>
-                      <input type="password" class="form-control" id="telefono"  placeholder="Ingresar número de teléfono">
+                <form [formGroup]="formObject" (ngSubmit)="logForm(formObject.value)">
+                    <div class="form-group">
+                      <label for="mail">Tu correo electrónico</label>
+                      <input type="email" class="form-control" id="mail" formControlName="mail" placeholder="Ingresar email">
                     </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Opinión</label>
-                    <textarea class="form-control" aria-label="With textarea" placeholder="Ingresar aquí el texto"></textarea>
-                  </div>
-                  
-                  <button type="submit" class="btn btn-class btn-block">ENVIAR</button>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono de contacto</label>
+                        <input type="number" class="form-control" id="telefono"  formControlName="phone" placeholder="Ingresar número de teléfono">
+                      </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Mensaje</label>
+                      <textarea class="form-control" aria-label="With textarea" formControlName="message" placeholder="Ingresar aquí el texto"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-class btn-block" [disabled]="!formObject.valid">ENVIAR</button>
                 </form>
           </div>
       </div>
   </div>
 
-  <div class="footer-separator">
-  <footer class="pt-4 my-md-5 pt-md-5 border-top">
-      <div class="row" style="padding: 1rem;">
-        <div class="col-12 col-md" style="padding-left: 5vh;">
-          <img class="mb-2" src="assets/img/image2.png" alt="" width="50" height="50">
-          <small class="d-block mb-3 text-muted">&copy; RADIO TANIA</small>
-        </div>
-        <div class="col-4 col-md">
-          <h5 style="font-size: 0.8rem">INSTAGRAM</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#" style="font-size: 0.8rem;">@radiotania</a></li>
-          </ul>
-        </div>
-        <div class="col-4 col-md">
-          <h5 style="font-size: 0.8rem">CONTACTANOS</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#" style="font-size: 0.8rem;">3518484782</a></li>
-     
-          </ul>
-        </div>
-        <div class="col-4 col-md">
-            <h5 style="font-size: 0.8rem">NUSTRO CORREO</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#" style="font-size: 0.8rem;">radiotania@gmail.com</a></li>
-          </ul>
-        </div>
-      </div>
-    </footer>   
-  </div>
 </div>
 
 

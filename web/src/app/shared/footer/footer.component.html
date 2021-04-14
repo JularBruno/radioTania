@@ -1,5 +1,5 @@
-<div class="footer">
-    <!-- <div class="hidder" *ngIf="iframeVisibility">
+<!-- <div class="footer">
+    <div class="hidder" *ngIf="iframeVisibility">
         <button class="button" (click)="hideIframe()">
             Esconder
         </button>
@@ -10,5 +10,75 @@
         <button class="buttonRep" (click)="hideIframe()">
             Reproductor
         </button>
-    </div> -->
-</div>
+    </div>
+</div> -->
+
+<footer class="pt-4 my-md-5 pt-md-5 border-top" *ngIf="isMobileResolution == false">
+    <div class="row" style="padding: 1rem;">
+        <div class="col-12 col-md" style="padding-left: 5vh;">
+            <img class="mb-2" src="assets/img/image2.png" alt="" width="50" height="50">
+            <small class="d-block mb-3 text-muted">&copy; RADIO TANIA</small>
+        </div>
+        <div class="col-3 col-md">
+            <h5 >INSTAGRAM</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="https://www.instagram.com/caminitosdeletras_7/" >@Caminitosdeletras_7</a></li>
+            </ul>
+        </div>
+        <div class="col-3 col-md">
+            <h5 >FACEBOOK</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="https://www.facebook.com/Caminitos-de-Letras-Cultura-Radio-Nacional-FM-921-Ushuaia-291885317865296/"
+                    >Caminitos de Letras Cultura</a></li>
+            </ul>
+        </div>
+        <div class="col-3 col-md">
+            <h5 >CONTACTANOS</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" >+5492901-586802 </a></li>
+        
+            </ul>
+        </div>
+        <div class="col-3 col-md">
+            <h5 >NUSTRO CORREO</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" >radiotania2020@gmail.com</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<footer class="pt-4 my-md-5 pt-md-5 border-top" *ngIf="isMobileResolution == true">
+    <div class="row" style="padding: 1rem;">
+        <div class="col-12 col-md" style="padding-left: 5vh;">
+            <img class="mb-2" src="assets/img/image2.png" alt="" width="50" height="50">
+            <small class="d-block mb-3 text-muted">&copy; RADIO TANIA</small>
+        </div>
+        <div class="col-6 col-md" style="padding: 0em;">
+            <h5 >INSTAGRAM</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="https://www.instagram.com/caminitosdeletras_7/" >@Caminitosdeletras_7</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md" style="padding: 0em;">
+            <h5 >FACEBOOK</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="https://www.facebook.com/Caminitos-de-Letras-Cultura-Radio-Nacional-FM-921-Ushuaia-291885317865296/"
+                    >Caminitos de Letras Cultura</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md" style="padding: 0em;">
+            <h5 >CONTACTANOS</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" >+5492901-586802 </a></li>
+        
+            </ul>
+        </div>
+        <div class="col-6 col-md" style="padding: 0em;">
+            <h5 >NUSTRO CORREO</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" >radiotania2020@gmail.com</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>

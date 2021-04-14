@@ -8,11 +8,17 @@ import { Component, OnInit } from '@angular/core';
 
 export class FooterComponent implements OnInit {
 
+  isMobileResolution: boolean;
   iframeVisibility: boolean = true;
 
   constructor() { }
 
   ngOnInit() {
+    if (window.innerWidth < 768) {
+      this.isMobileResolution = true;
+    } else {
+      this.isMobileResolution = false;
+    }
   }
 
   hideIframe() {

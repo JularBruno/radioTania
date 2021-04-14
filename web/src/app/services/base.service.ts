@@ -67,6 +67,7 @@ export class BaseService {
       )
       .catch(this.handleError.bind(this));
   }
+
   remove(model): Promise<any> {
 
     const url = environment.serverUrl + this.getApiEndPoint() + '/' + model.id;
@@ -121,6 +122,8 @@ export class BaseService {
   sendMail(occurrence): Promise<any> {
 
     const url = environment.serverUrl + this.getApiEndPoint() + '/mail';
+
+    console.log('url ', url);
 
     return this.http.post(url, occurrence)
       .toPromise()

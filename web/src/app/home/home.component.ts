@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
       this.isMobileResolution = false;
     }
 
-    this.getHomeItem();
+    // this.getHomeItem();
     this.formNew();
   }
 
@@ -62,9 +62,13 @@ export class HomeComponent implements OnInit {
 
   logForm(value) {
     console.log('mail ', value);
-    this.homesService.sendMail(value).then( res=> {
+    this.formObject.reset();
+    this.homesService.sendMail(value).then( res => {
       console.log('res ', res);
-    });
+      alert('Mail enviado con éxito!');
+    }).catch( err => {
+      console.log('err ', err);
+    }); 
   }
 
 

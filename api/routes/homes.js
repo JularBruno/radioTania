@@ -53,7 +53,8 @@ router.post('/mail', function (req, res, next) {
     to: 'radiotania2020@gmail.com',
     // to: 'brunojular00@gmail.com',
     subject: 'Mail de radiotania.com',
-    text: ` telefono: ${params.telefono}
+    text: ` mail: ${params.mail}
+            telefono: ${params.phone}
             mensaje: ${params.message}
           `
   };
