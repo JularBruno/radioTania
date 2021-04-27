@@ -44,11 +44,11 @@ export class HomeComponent implements OnInit {
       this.isMobileResolution = false;
     }
 
-    // this.getHomeItem();
     this.formNew();
   }
 
   ngOnInit() {
+    this.getHomeItem();
   }
 
   formNew() {
@@ -73,8 +73,10 @@ export class HomeComponent implements OnInit {
 
 
   getHomeItem() {
+    console.log('getHomeItem()')
     this.homesService.getAll({}).then(res => {
       this.homeItem = res[0];
+      console.log('this.homeItem ', this.homeItem);
       this.dayClicked('monday');
     });
   }

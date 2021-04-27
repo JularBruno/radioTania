@@ -5,8 +5,10 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://localhost:8080/api',
-  filesUrl: 'http://localhost:8080/files'
+  // serverUrl: 'http://localhost:8080/api',
+  // filesUrl: 'http://localhost:8080/files'
   // serverUrl: 'http://35.247.250.143:3071/api',
   // filesUrl: 'http://35.247.250.143:3071/files',
+  serverUrl: 'https://radiotania.com/api',
+  filesUrl: 'https://radiotania.com/files',
 }; 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VideosService } from '../services/videos.service';
 import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-video',
@@ -15,7 +16,8 @@ export class VideoComponent implements OnInit {
 
   constructor(
     public videosService: VideosService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public sanitizer: DomSanitizer
   ) {
     if (window.innerWidth < 768) {
       this.isMobileResolution = true;
@@ -36,6 +38,15 @@ export class VideoComponent implements OnInit {
         this.videos = res;
       });
     });
+  }
+
+  getVideo(item) {
+    if(item.videoUrl !== null) {
+      let url = this.sanitizer.bypassSecurityTrustResourceUrl(item.videoUrl);
+      return url;
+    } else {
+      return null;
+    }
   }
 
 }
