@@ -120,13 +120,16 @@ module.exports = {
         prefix = p[1] + '_';
       }
     }
-    debug('upload - file', req)
+    // debug('upload - file', req)
 
     let shouldReturnArray = [];
 
+    debug('req.files ', req.files);
     if (req.files && req.files.file0) {
 
       for(let i in req.files) {
+
+        debug('req.files[i] ', req.files[i]);
 
         const file = req.files[i];
         const tmp = file.type.split('/');
